@@ -24,3 +24,9 @@ C:\Users\chern\source\repos\WindowsFormsApp11\WindowsFormsApp11\bin\Debug\Newton
 C:\Users\chern\source\repos\WindowsFormsApp11\WindowsFormsApp11\bin\Debug\Newtonsoft.Json.Bson.pdb
 C:\Users\chern\source\repos\WindowsFormsApp11\WindowsFormsApp11\bin\Debug\Newtonsoft.Json.Bson.xml
 C:\Users\chern\source\repos\WindowsFormsApp11\WindowsFormsApp11\obj\Debug\WindowsFormsApp11.Components.UserControlHome.resources
+C:\Users\chern\source\repos\WindowsFormsApp11\WindowsFormsApp11\obj\Debug\WindowsFormsApp11.Components.Members.UserControlListViewMembersActions.resources
+C:\Users\chern\source\repos\WindowsFormsApp11\WindowsFormsApp11\obj\Debug\WindowsFormsApp11.Components.Home.UserControlHomeWelcome.resources
+C:\Users\chern\source\repos\WindowsFormsApp11\WindowsFormsApp11\obj\Debug\WindowsFormsApp11.Components.Home.UserControlHomeCarousel.resources
+C:\Users\chern\source\repos\WindowsFormsApp11\WindowsFormsApp11\obj\Debug\WindowsFormsApp11.Components.Share.UserControlFooter.resources
+C:\Users\chern\source\repos\WindowsFormsApp11\WindowsFormsApp11\obj\Debug\WindowsFormsApp11.Components.Share.Footer.UserControlFooterSecion1.resources
+C:\Users\chern\source\repos\WindowsFormsApp11\WindowsFormsApp11\obj\Debug\WindowsFormsApp11.Components.Share.Footer.UserControlFooterSeccion2.resources

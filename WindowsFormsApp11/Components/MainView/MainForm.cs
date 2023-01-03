@@ -36,6 +36,8 @@ namespace WindowsFormsApp11.Components.MainView
             mainMenuPresenter.getDataAttendances();
             this.userControlHome1.Hide();
             this.userControlListViewMembers1.Show();
+            this.userControlListViewMembers1.Width = (int) (Screen.FromControl(this).Bounds.Width * 0.80);
+
         }
     }  
 }

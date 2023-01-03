@@ -8,14 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp11.Components
+namespace WindowsFormsApp11.Components.Share.Footer
 {
-    public partial class UserControlHome : UserControl
+    public partial class UserControlFooterSeccion2 : UserControl
     {
-        public UserControlHome()
+        public UserControlFooterSeccion2()
         {
             InitializeComponent();
-            this.userControlHomeCarousel1.Width =   Screen.FromControl(this).Bounds.Width;
         }
     }
 }

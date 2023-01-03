@@ -18,7 +18,37 @@ namespace WindowsFormsApp11.Components
         {
             InitializeComponent();
 
+            ListViewColumnCollection columns = this.radListView1.Columns;
+
+            int screenWidth = Screen.FromControl(this).Bounds.Width;
+            int screenHeigh = Screen.FromControl(this).Bounds.Height;
+
+
+
+            foreach (ListViewDetailColumn column in columns) {
+
+                column.MaxWidth = 130.00F;
+                column.Owner.HeaderHeight = 40.00F;
                 
+            }
+
+            ListViewDataItemCollection rows = this.radListView1.Items;
+
+            this.radListView1.ItemSize = new Size(0,50);
+
+            foreach (ListViewDataItem row in rows) {
+            
+                   //row.wi
+            
+            }
+
+            this.radListView1.Columns.ElementAt(this.radListView1.Columns.Count - 1).Visible = false;
+            this.radListView1.Width = (int)(screenWidth * 0.90);
+
+            this.userControlListViewMembersActions1.Location = new Point(new Size((int)(screenWidth * 0.90), (int)(screenHeigh * 0.10)));
+            
+
+
 
 
 
@@ -34,7 +64,10 @@ namespace WindowsFormsApp11.Components
                     model.Member.Name + " " + model.Member.LastName ,
                     model.Member.BirthDay.ToString(),
                     model.Member.Email,
-                    model.Member.RegisteredOn.ToString()});
+                    model.Member.RegisteredOn.ToString(),
+                    model.Member.Id.ToString()
+                    
+                    });
             }
             listViewDataItem.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.radListView1.Items.AddRange(new Telerik.WinControls.UI.ListViewDataItem[] {
@@ -43,6 +76,13 @@ namespace WindowsFormsApp11.Components
 
         }
 
+        private void radListView1_ItemCheckedChanged(object sender, ListViewItemEventArgs e)
+        {
+                
+          
 
+            ListViewDataItem dataItem = e.Item;
+            string value =  (string) dataItem[dataItem.FieldCount];
+        }
     }
 }

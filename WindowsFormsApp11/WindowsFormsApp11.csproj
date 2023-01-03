@@ -65,6 +65,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API\response\AttendancesResponse.cs" />
+    <Compile Include="Components\Home\UserControlHomeCarousel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Home\UserControlHomeCarousel.Designer.cs">
+      <DependentUpon>UserControlHomeCarousel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Home\UserControlHomeWelcome.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Home\UserControlHomeWelcome.Designer.cs">
+      <DependentUpon>UserControlHomeWelcome.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\Login\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +101,30 @@
     <Compile Include="Components\Members\UserControlListViewMembers.Designer.cs">
       <DependentUpon>UserControlListViewMembers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\Members\UserControlListViewMembersActions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Members\UserControlListViewMembersActions.Designer.cs">
+      <DependentUpon>UserControlListViewMembersActions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Share\Footer\UserControlFooter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Share\Footer\UserControlFooter.Designer.cs">
+      <DependentUpon>UserControlFooter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Share\Footer\UserControlFooterSeccion2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Share\Footer\UserControlFooterSeccion2.Designer.cs">
+      <DependentUpon>UserControlFooterSeccion2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Share\Footer\UserControlFooterSecion1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Share\Footer\UserControlFooterSecion1.Designer.cs">
+      <DependentUpon>UserControlFooterSecion1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presenter\Login\LoginPresenter.cs" />
     <Compile Include="Presenter\MainMenu\MainMenuPresenter.cs" />
     <Compile Include="Program.cs" />
@@ -97,6 +133,12 @@
     <Compile Include="Service\MainMenuService.cs" />
     <Compile Include="View\Login\ILoginView.cs" />
     <Compile Include="View\MainMenu\IMainMenuView.cs" />
+    <EmbeddedResource Include="Components\Home\UserControlHomeCarousel.resx">
+      <DependentUpon>UserControlHomeCarousel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Home\UserControlHomeWelcome.resx">
+      <DependentUpon>UserControlHomeWelcome.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Components\Login\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -108,6 +150,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Members\UserControlListViewMembers.resx">
       <DependentUpon>UserControlListViewMembers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Members\UserControlListViewMembersActions.resx">
+      <DependentUpon>UserControlListViewMembersActions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Share\Footer\UserControlFooter.resx">
+      <DependentUpon>UserControlFooter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Share\Footer\UserControlFooterSeccion2.resx">
+      <DependentUpon>UserControlFooterSeccion2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Share\Footer\UserControlFooterSecion1.resx">
+      <DependentUpon>UserControlFooterSecion1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

@@ -35,6 +35,7 @@ namespace WindowsFormsApp11.Components.Login
             if (loginPresenter.IsLoggedIn())
             {
                 mainForm.Show();
+                mainForm.WindowState = FormWindowState.Maximized;
             }
             else
             {
