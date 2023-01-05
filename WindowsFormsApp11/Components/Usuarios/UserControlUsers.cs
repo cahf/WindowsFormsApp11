@@ -1,0 +1,43 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using Telerik.WinControls.UI;
+
+namespace WindowsFormsApp11.Components.Usuarios
+{
+    public partial class UserControlUsers : UserControl
+    {
+        public UserControlUsers()
+        {
+            InitializeComponent();
+            string[] columns = new string[] {"Nombre","Apellido","Edad"};
+            ListViewDetailColumn listViewDetailColumn;
+            this.radListViewGeneral.ViewType = Telerik.WinControls.UI.ListViewType.DetailsView;
+
+            for (int i = 0; i < columns.Length; i++) {
+
+                string column = columns[i];
+                listViewDetailColumn = new ListViewDetailColumn(column, column);
+                listViewDetailColumn.HeaderText = column.ToUpper();
+                listViewDetailColumn.MaxWidth = 195F;
+                listViewDetailColumn.MinWidth = 195F;
+                listViewDetailColumn.Width = 195F;
+                this.radListViewGeneral.Columns.Add(listViewDetailColumn);
+
+            }
+
+
+
+
+
+            
+
+        }
+    }
+}

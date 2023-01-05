@@ -132,6 +132,12 @@
     <Compile Include="Components\Share\Footer\UserControlFooterSecion1.Designer.cs">
       <DependentUpon>UserControlFooterSecion1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\Usuarios\UserControlUsers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Usuarios\UserControlUsers.Designer.cs">
+      <DependentUpon>UserControlUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presenter\Login\LoginPresenter.cs" />
     <Compile Include="Presenter\MainMenu\MainMenuPresenter.cs" />
     <Compile Include="Program.cs" />
@@ -172,6 +178,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Share\Footer\UserControlFooterSecion1.resx">
       <DependentUpon>UserControlFooterSecion1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Usuarios\UserControlUsers.resx">
+      <DependentUpon>UserControlUsers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

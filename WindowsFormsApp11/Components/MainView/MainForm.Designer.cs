@@ -35,13 +35,14 @@
             this.radMenuItem4 = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuItem5 = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuItem6 = new Telerik.WinControls.UI.RadMenuItem();
-            this.userControlListViewMembers1 = new WindowsFormsApp11.Components.UserControlListViewMembers();
-            this.userControlHome1 = new WindowsFormsApp11.Components.UserControlHome();
             this.radMenuItem7 = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuItem8 = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuItem9 = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuItem10 = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuItem11 = new Telerik.WinControls.UI.RadMenuItem();
+            this.userControlHome1 = new WindowsFormsApp11.Components.UserControlHome();
+            this.userControlListViewMembers1 = new WindowsFormsApp11.Components.UserControlListViewMembers();
+            this.userControlUsers1 = new WindowsFormsApp11.Components.Usuarios.UserControlUsers();
             ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
@@ -54,7 +55,7 @@
             this.radMenuItem3,
             this.radMenuItem7});
             this.radMenu1.Location = new System.Drawing.Point(0, 0);
-            this.radMenu1.Margin = new System.Windows.Forms.Padding(48, 48, 48, 48);
+            this.radMenu1.Margin = new System.Windows.Forms.Padding(72, 72, 72, 72);
             this.radMenu1.Name = "radMenu1";
             this.radMenu1.Size = new System.Drawing.Size(1369, 32);
             this.radMenu1.TabIndex = 0;
@@ -97,22 +98,6 @@
             this.radMenuItem6.Text = "Entrada y Salida";
             this.radMenuItem6.Click += new System.EventHandler(this.radMenuItem6_Click);
             // 
-            // userControlListViewMembers1
-            // 
-            this.userControlListViewMembers1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.userControlListViewMembers1.Location = new System.Drawing.Point(0, 32);
-            this.userControlListViewMembers1.Name = "userControlListViewMembers1";
-            this.userControlListViewMembers1.Size = new System.Drawing.Size(1369, 906);
-            this.userControlListViewMembers1.TabIndex = 1;
-            // 
-            // userControlHome1
-            // 
-            this.userControlHome1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.userControlHome1.Location = new System.Drawing.Point(0, 32);
-            this.userControlHome1.Name = "userControlHome1";
-            this.userControlHome1.Size = new System.Drawing.Size(1369, 906);
-            this.userControlHome1.TabIndex = 2;
-            // 
             // radMenuItem7
             // 
             this.radMenuItem7.Items.AddRange(new Telerik.WinControls.RadItem[] {
@@ -142,12 +127,37 @@
             // 
             this.radMenuItem11.Name = "radMenuItem11";
             this.radMenuItem11.Text = "Usuarios";
+            this.radMenuItem11.Click += new System.EventHandler(this.radMenuItem11_Click);
+            // 
+            // userControlHome1
+            // 
+            this.userControlHome1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.userControlHome1.Location = new System.Drawing.Point(0, 32);
+            this.userControlHome1.Name = "userControlHome1";
+            this.userControlHome1.Size = new System.Drawing.Size(1369, 906);
+            this.userControlHome1.TabIndex = 2;
+            // 
+            // userControlListViewMembers1
+            // 
+            this.userControlListViewMembers1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.userControlListViewMembers1.Location = new System.Drawing.Point(0, 32);
+            this.userControlListViewMembers1.Name = "userControlListViewMembers1";
+            this.userControlListViewMembers1.Size = new System.Drawing.Size(1369, 906);
+            this.userControlListViewMembers1.TabIndex = 1;
+            // 
+            // userControlUsers1
+            // 
+            this.userControlUsers1.Location = new System.Drawing.Point(0, 379);
+            this.userControlUsers1.Name = "userControlUsers1";
+            this.userControlUsers1.Size = new System.Drawing.Size(1369, 484);
+            this.userControlUsers1.TabIndex = 3;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1369, 938);
+            this.Controls.Add(this.userControlUsers1);
             this.Controls.Add(this.userControlHome1);
             this.Controls.Add(this.userControlListViewMembers1);
             this.Controls.Add(this.radMenu1);
@@ -176,5 +186,6 @@
         private Telerik.WinControls.UI.RadMenuItem radMenuItem9;
         private Telerik.WinControls.UI.RadMenuItem radMenuItem10;
         private Telerik.WinControls.UI.RadMenuItem radMenuItem11;
+        private Usuarios.UserControlUsers userControlUsers1;
     }
 }

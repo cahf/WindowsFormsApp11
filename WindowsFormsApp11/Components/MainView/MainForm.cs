@@ -19,6 +19,7 @@ namespace WindowsFormsApp11.Components.MainView
         {
             InitializeComponent();
             this.userControlListViewMembers1.Hide();
+            this.userControlUsers1.Hide();
             this.userControlHome1.Show();
             mainMenuPresenter = new MainMenuPresenter(this);
             //mainMenuPresenter.getDataAttendances();
@@ -46,8 +47,19 @@ namespace WindowsFormsApp11.Components.MainView
         {
             mainMenuPresenter.getDataAttendances();
             this.userControlHome1.Hide();
+            this.userControlUsers1.Hide();
             this.userControlListViewMembers1.Show();
             this.userControlListViewMembers1.Width = (int)(Screen.FromControl(this).Bounds.Width * 0.80);
+        }
+
+        private void radMenuItem11_Click(object sender, EventArgs e)
+        {
+            //Vista DE ADMINISTRACION USUARIOS
+
+            this.userControlHome1.Hide();
+            this.userControlListViewMembers1.Hide();
+            this.userControlUsers1.Show();
+
         }
     }  
 }
