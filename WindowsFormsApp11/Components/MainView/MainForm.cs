@@ -14,7 +14,8 @@ namespace WindowsFormsApp11.Components.MainView
     public partial class MainForm : Telerik.WinControls.UI.RadForm, IMainMenuView
     {
         readonly MainMenuPresenter mainMenuPresenter = null;
-       
+        readonly int screenWidth;
+        readonly int screenHeigh;
         public MainForm()
         {
             InitializeComponent();
@@ -22,6 +23,8 @@ namespace WindowsFormsApp11.Components.MainView
             this.userControlUsers1.Hide();
             this.userControlHome1.Show();
             mainMenuPresenter = new MainMenuPresenter(this);
+            screenWidth = Screen.FromControl(this).Bounds.Width;
+            screenHeigh = Screen.FromControl(this).Bounds.Height;
             //mainMenuPresenter.getDataAttendances();
         }
 
@@ -56,9 +59,16 @@ namespace WindowsFormsApp11.Components.MainView
         {
             //Vista DE ADMINISTRACION USUARIOS
 
+
             this.userControlHome1.Hide();
             this.userControlListViewMembers1.Hide();
+            this.userControlUsers1.Size = new Size((int)(this.screenWidth * 0.50), (int)(this.screenHeigh * 0.50));
+            this.userControlUsers1.Location = new Point(0,0);
             this.userControlUsers1.Show();
+
+            
+            
+
 
         }
     }  

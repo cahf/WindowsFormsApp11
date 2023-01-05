@@ -13,7 +13,7 @@ namespace WindowsFormsApp11.Components.Usuarios
 {
     public partial class UserControlUsers : UserControl
     {
-        public UserControlUsers()
+        public UserControlUsers(int mainFormWidth,int mainFormHeigh)
         {
             InitializeComponent();
             string[] columns = new string[] {"Nombre","Apellido","Edad"};
@@ -35,8 +35,10 @@ namespace WindowsFormsApp11.Components.Usuarios
             }
 
             this.radListViewGeneral.Size = new  System.Drawing.Size((int)tableWidth, this.radListViewGeneral.Size.Height);
+            this.radListViewGeneral.Location = new System.Drawing.Point(0, 100);
             //this.Size = new System.Drawing.Size(50, 50);
             //this.Width = 50;
+            //this.Size = new System.Drawing.Size(600, 484);
 
 
 

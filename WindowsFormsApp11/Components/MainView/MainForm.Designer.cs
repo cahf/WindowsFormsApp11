@@ -1,7 +1,11 @@
-﻿namespace WindowsFormsApp11.Components.MainView
+﻿using System.Windows.Forms;
+
+namespace WindowsFormsApp11.Components.MainView
 {
     partial class MainForm
     {
+
+
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -28,6 +32,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+          
+            int screenWidth = Screen.FromControl(this).Bounds.Width;
+            int screenHeigh = Screen.FromControl(this).Bounds.Height;
             this.radMenu1 = new Telerik.WinControls.UI.RadMenu();
             this.radMenuItem1 = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuItem2 = new Telerik.WinControls.UI.RadMenuItem();
@@ -42,7 +49,7 @@
             this.radMenuItem11 = new Telerik.WinControls.UI.RadMenuItem();
             this.userControlHome1 = new WindowsFormsApp11.Components.UserControlHome();
             this.userControlListViewMembers1 = new WindowsFormsApp11.Components.UserControlListViewMembers();
-            this.userControlUsers1 = new WindowsFormsApp11.Components.Usuarios.UserControlUsers();
+            this.userControlUsers1 = new WindowsFormsApp11.Components.Usuarios.UserControlUsers(screenWidth,screenHeigh);
             ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
