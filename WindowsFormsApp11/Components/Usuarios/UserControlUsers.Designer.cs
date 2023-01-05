@@ -34,15 +34,14 @@
             // 
             // radListViewGeneral
             // 
-            this.radListViewGeneral.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radListViewGeneral.GroupIndent = 38;
             this.radListViewGeneral.GroupItemSize = new System.Drawing.Size(300, 30);
             this.radListViewGeneral.HeaderHeight = 52.5F;
             this.radListViewGeneral.ItemSize = new System.Drawing.Size(300, 30);
-            this.radListViewGeneral.Location = new System.Drawing.Point(0, 0);
+            this.radListViewGeneral.Location = new System.Drawing.Point(311, 144);
             this.radListViewGeneral.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radListViewGeneral.Name = "radListViewGeneral";
-            this.radListViewGeneral.Size = new System.Drawing.Size(1348, 484);
+            this.radListViewGeneral.Size = new System.Drawing.Size(433, 225);
             this.radListViewGeneral.TabIndex = 0;
             // 
             // UserControlUsers

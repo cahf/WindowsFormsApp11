@@ -19,6 +19,7 @@ namespace WindowsFormsApp11.Components.Usuarios
             string[] columns = new string[] {"Nombre","Apellido","Edad"};
             ListViewDetailColumn listViewDetailColumn;
             this.radListViewGeneral.ViewType = Telerik.WinControls.UI.ListViewType.DetailsView;
+            float tableWidth = 0;
 
             for (int i = 0; i < columns.Length; i++) {
 
@@ -29,14 +30,18 @@ namespace WindowsFormsApp11.Components.Usuarios
                 listViewDetailColumn.MinWidth = 195F;
                 listViewDetailColumn.Width = 195F;
                 this.radListViewGeneral.Columns.Add(listViewDetailColumn);
+                tableWidth += listViewDetailColumn.Width;
 
             }
 
+            this.radListViewGeneral.Size = new  System.Drawing.Size((int)tableWidth, this.radListViewGeneral.Size.Height);
+            //this.Size = new System.Drawing.Size(50, 50);
+            //this.Width = 50;
 
 
 
 
-            
+
 
         }
     }
