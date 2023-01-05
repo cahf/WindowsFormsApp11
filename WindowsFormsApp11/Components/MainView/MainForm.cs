@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Telerik.WinControls;
+using WindowsFormsApp11.Components.Usuarios;
 using WindowsFormsApp11.Presenter.MainMenu;
 using WindowsFormsApp11.View.MainMenu;
 
@@ -29,6 +30,9 @@ namespace WindowsFormsApp11.Components.MainView
         }
 
         public UserControlListViewMembers listViewUserControl { get { return this.userControlListViewMembers1; } set { this.userControlListViewMembers1 = value; } }
+
+        public UserControlUsers UsersUserControl { get { return this.userControlUsers1; } set { this.userControlUsers1 = value; } }
+
 
         private void radMenuItem2_Click(object sender, EventArgs e)
         {
@@ -59,11 +63,11 @@ namespace WindowsFormsApp11.Components.MainView
         {
             //Vista DE ADMINISTRACION USUARIOS
 
-
             this.userControlHome1.Hide();
             this.userControlListViewMembers1.Hide();
             this.userControlUsers1.Size = new Size((int)(this.screenWidth * 0.50), (int)(this.screenHeigh * 0.50));
-            this.userControlUsers1.Location = new Point(0,0);
+            this.userControlUsers1.Location = new Point(0,50);
+            mainMenuPresenter.getDataUsers();
             this.userControlUsers1.Show();
 
             

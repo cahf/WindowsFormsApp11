@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WindowsFormsApp11.API.request;
+using WindowsFormsApp11.API.response;
 using WindowsFormsApp11.Service;
 using WindowsFormsApp11.View.MainMenu;
 
@@ -24,6 +25,15 @@ namespace WindowsFormsApp11.Presenter.MainMenu
           AttendancesResponse data = MainMenuService.getAttandances();
           this._mainMenuView.listViewUserControl.setAttendances(data);
         
+        
+        }
+
+        public void getDataUsers() {
+
+            UsersResponse data = MainMenuService.getUsersList();
+            this._mainMenuView.UsersUserControl.setUsers(data);
+
+
         
         }
         

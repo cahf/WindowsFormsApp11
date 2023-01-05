@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API\response\AttendancesResponse.cs" />
+    <Compile Include="API\response\UsersResponse.cs" />
     <Compile Include="Components\Home\UserControlHomeCarousel.cs">
       <SubType>UserControl</SubType>
     </Compile>

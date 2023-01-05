@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Telerik.WinControls.UI;
+using WindowsFormsApp11.API.response;
 
 namespace WindowsFormsApp11.Components.Usuarios
 {
@@ -16,7 +17,7 @@ namespace WindowsFormsApp11.Components.Usuarios
         public UserControlUsers(int mainFormWidth,int mainFormHeigh)
         {
             InitializeComponent();
-            string[] columns = new string[] {"Nombre","Apellido","Edad"};
+            string[] columns = new string[] {"Nombre","Correo","Celular","id"};
             ListViewDetailColumn listViewDetailColumn;
             this.radListViewGeneral.ViewType = Telerik.WinControls.UI.ListViewType.DetailsView;
             float tableWidth = 0;
@@ -30,6 +31,7 @@ namespace WindowsFormsApp11.Components.Usuarios
                 listViewDetailColumn.MinWidth = 195F;
                 listViewDetailColumn.Width = 195F;
                 this.radListViewGeneral.Columns.Add(listViewDetailColumn);
+                if(column != "id")
                 tableWidth += listViewDetailColumn.Width;
 
             }
@@ -40,11 +42,42 @@ namespace WindowsFormsApp11.Components.Usuarios
             //this.Width = 50;
             //this.Size = new System.Drawing.Size(600, 484);
 
+            this.radListViewGeneral.Columns.ElementAt(this.radListViewGeneral.Columns.Count - 1).Visible = false;
+
+
 
 
 
 
 
         }
+
+
+        public void setUsers(UsersResponse data)
+        {
+            ListViewDataItem listViewDataItem = null;
+            //"Nombre "
+            //"Correo"
+            //"Celuar"
+            //"ID"
+            for (int i = 0; i < data.ModelUser.Length; i++)
+            {
+                ModelUser model = data.ModelUser[i];
+                listViewDataItem = new Telerik.WinControls.UI.ListViewDataItem("ListViewItem" + i, new string[] {
+                    model.UserName,
+                    model.Email,
+                    model.PhoneNumber,
+                    model.Id.ToString(),
+
+                    });
+                listViewDataItem.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+                this.radListViewGeneral.Items.Add(listViewDataItem);
+            }
+          
+
+
+        }
+
+
     }
 }
