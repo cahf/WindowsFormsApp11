@@ -68,6 +68,46 @@ namespace WindowsFormsApp11.Service
             return response;
         }
 
+        public static UsersDeleteResponse  deleterUser(string id)
+        {
+
+            var httpRequest = (HttpWebRequest)WebRequest.Create(_urlUsers+"/"+id);
+            httpRequest.Method = "DELETE";
+            httpRequest.Accept = "application/json";
+            httpRequest.ContentType = "application/json";
+            UsersDeleteResponse response = new UsersDeleteResponse();
+            try
+            {
+
+                var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
+                var streamReader = new StreamReader(httpResponse.GetResponseStream());
+                var result = streamReader.ReadToEnd();
+                response = JsonConvert.DeserializeObject<UsersDeleteResponse>(result);
+            }
+            catch (ProtocolViolationException ex)
+            {
+                throw new ProtocolViolationException();
+            }
+            catch (NotSupportedException ex)
+            {
+                throw new NotSupportedException();
+            }
+            catch (WebException ex)
+            {
+                throw new WebException();
+            }
+            catch (InvalidOperationException ex)
+            {
+                throw new InvalidOperationException();
+            }
+
+
+
+            return response;
+        }
+
+
+
 
     }
 }
