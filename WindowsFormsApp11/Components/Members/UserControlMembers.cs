@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp11.Components.Members
 {
-    public partial class UserControlListViewMembersActions : UserControl
+    public partial class UserControlMembers : UserControl
     {
-        public UserControlListViewMembersActions()
+        public UserControlMembers()
         {
             InitializeComponent();
         }

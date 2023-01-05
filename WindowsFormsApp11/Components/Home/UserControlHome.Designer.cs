@@ -28,16 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.userControlFooter1 = new WindowsFormsApp11.Components.Share.UserControlFooter();
             this.userControlHomeCarousel1 = new WindowsFormsApp11.Components.Home.UserControlHomeCarousel();
             this.userControlWelcome1 = new WindowsFormsApp11.Components.Home.UserControlHomeWelcome();
-            this.userControlFooter1 = new WindowsFormsApp11.Components.Share.UserControlFooter();
             this.SuspendLayout();
+            // 
+            // userControlFooter1
+            // 
+            this.userControlFooter1.Location = new System.Drawing.Point(0, 830);
+            this.userControlFooter1.Name = "userControlFooter1";
+            this.userControlFooter1.Size = new System.Drawing.Size(1627, 293);
+            this.userControlFooter1.TabIndex = 2;
             // 
             // userControlHomeCarousel1
             // 
-            this.userControlHomeCarousel1.Location = new System.Drawing.Point(3, 107);
+            this.userControlHomeCarousel1.Location = new System.Drawing.Point(3, 317);
             this.userControlHomeCarousel1.Name = "userControlHomeCarousel1";
-            this.userControlHomeCarousel1.Size = new System.Drawing.Size(1413, 570);
+            this.userControlHomeCarousel1.Size = new System.Drawing.Size(1413, 494);
             this.userControlHomeCarousel1.TabIndex = 1;
             // 
             // userControlWelcome1
@@ -45,15 +52,8 @@
             this.userControlWelcome1.Dock = System.Windows.Forms.DockStyle.Top;
             this.userControlWelcome1.Location = new System.Drawing.Point(0, 0);
             this.userControlWelcome1.Name = "userControlWelcome1";
-            this.userControlWelcome1.Size = new System.Drawing.Size(1633, 113);
+            this.userControlWelcome1.Size = new System.Drawing.Size(1633, 230);
             this.userControlWelcome1.TabIndex = 0;
-            // 
-            // userControlFooter1
-            // 
-            this.userControlFooter1.Location = new System.Drawing.Point(0, 694);
-            this.userControlFooter1.Name = "userControlFooter1";
-            this.userControlFooter1.Size = new System.Drawing.Size(1627, 408);
-            this.userControlFooter1.TabIndex = 2;
             // 
             // UserControlHome
             // 

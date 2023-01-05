@@ -54,6 +54,7 @@
       <HintPath>..\lib\RCWF\2022.3.1109.40.Trial\Telerik.WinControls.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Telerik.WinControls.GridView, Version=2022.3.1109.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
     <Reference Include="Telerik.WinControls.UI, Version=2022.3.1109.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
       <HintPath>..\lib\RCWF\2022.3.1109.40.Trial\Telerik.WinControls.UI.dll</HintPath>
       <Private>True</Private>
@@ -71,10 +72,16 @@
     <Compile Include="Components\Home\UserControlHomeCarousel.Designer.cs">
       <DependentUpon>UserControlHomeCarousel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\Home\UserControlHomeWelcome.cs">
+    <Compile Include="Components\Members\VirtualGrid\UserControlMembersVirtualGrid.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Home\UserControlHomeWelcome.Designer.cs">
+    <Compile Include="Components\Members\VirtualGrid\UserControlMembersVirtualGrid.Designer.cs">
+      <DependentUpon>UserControlMembersVirtualGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Share\UserControlHomeWelcome.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Share\UserControlHomeWelcome.Designer.cs">
       <DependentUpon>UserControlHomeWelcome.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\Login\LoginForm.cs">
@@ -95,17 +102,17 @@
     <Compile Include="Components\Home\UserControlHome.Designer.cs">
       <DependentUpon>UserControlHome.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\Members\UserControlListViewMembers.cs">
+    <Compile Include="Components\Attendances\UserControlListViewMembers.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Members\UserControlListViewMembers.Designer.cs">
+    <Compile Include="Components\Attendances\UserControlListViewMembers.Designer.cs">
       <DependentUpon>UserControlListViewMembers.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\Members\UserControlListViewMembersActions.cs">
+    <Compile Include="Components\Members\UserControlMembers.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Components\Members\UserControlListViewMembersActions.Designer.cs">
-      <DependentUpon>UserControlListViewMembersActions.cs</DependentUpon>
+    <Compile Include="Components\Members\UserControlMembers.Designer.cs">
+      <DependentUpon>UserControlMembers.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\Share\Footer\UserControlFooter.cs">
       <SubType>UserControl</SubType>
@@ -136,7 +143,10 @@
     <EmbeddedResource Include="Components\Home\UserControlHomeCarousel.resx">
       <DependentUpon>UserControlHomeCarousel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\Home\UserControlHomeWelcome.resx">
+    <EmbeddedResource Include="Components\Members\VirtualGrid\UserControlMembersVirtualGrid.resx">
+      <DependentUpon>UserControlMembersVirtualGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Share\UserControlHomeWelcome.resx">
       <DependentUpon>UserControlHomeWelcome.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Login\LoginForm.resx">
@@ -148,11 +158,11 @@
     <EmbeddedResource Include="Components\Home\UserControlHome.resx">
       <DependentUpon>UserControlHome.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\Members\UserControlListViewMembers.resx">
+    <EmbeddedResource Include="Components\Attendances\UserControlListViewMembers.resx">
       <DependentUpon>UserControlListViewMembers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\Members\UserControlListViewMembersActions.resx">
-      <DependentUpon>UserControlListViewMembersActions.cs</DependentUpon>
+    <EmbeddedResource Include="Components\Members\UserControlMembers.resx">
+      <DependentUpon>UserControlMembers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Share\Footer\UserControlFooter.resx">
       <DependentUpon>UserControlFooter.cs</DependentUpon>

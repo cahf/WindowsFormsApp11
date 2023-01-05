@@ -33,11 +33,21 @@ namespace WindowsFormsApp11.Components.MainView
 
         private void radMenuItem4_Click(object sender, EventArgs e)
         {
+           
+
+        }
+
+        private void radMenuItem5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radMenuItem6_Click(object sender, EventArgs e)
+        {
             mainMenuPresenter.getDataAttendances();
             this.userControlHome1.Hide();
             this.userControlListViewMembers1.Show();
-            this.userControlListViewMembers1.Width = (int) (Screen.FromControl(this).Bounds.Width * 0.80);
-
+            this.userControlListViewMembers1.Width = (int)(Screen.FromControl(this).Bounds.Width * 0.80);
         }
     }  
 }

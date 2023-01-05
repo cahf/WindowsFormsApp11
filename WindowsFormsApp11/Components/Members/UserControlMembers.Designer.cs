@@ -1,6 +1,6 @@
-﻿namespace WindowsFormsApp11.Components.Home
+﻿namespace WindowsFormsApp11.Components.Members
 {
-    partial class UserControlHomeWelcome
+    partial class UserControlMembers
     {
         /// <summary> 
         /// Variable del diseñador necesaria.
@@ -28,35 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
+            this.userControlHomeWelcome1 = new WindowsFormsApp11.Components.Home.UserControlHomeWelcome();
             this.SuspendLayout();
             // 
-            // radLabel1
+            // userControlHomeWelcome1
             // 
-            this.radLabel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radLabel1.Font = new System.Drawing.Font("Segoe UI", 30F);
-            this.radLabel1.Location = new System.Drawing.Point(0, 0);
-            this.radLabel1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.radLabel1.Name = "radLabel1";
-            this.radLabel1.Size = new System.Drawing.Size(1222, 91);
-            this.radLabel1.TabIndex = 1;
-            this.radLabel1.Text = "Bienvenido Carlos Alberto Hernandez Flores";
+            this.userControlHomeWelcome1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.userControlHomeWelcome1.Location = new System.Drawing.Point(0, 0);
+            this.userControlHomeWelcome1.Name = "userControlHomeWelcome1";
+            this.userControlHomeWelcome1.Size = new System.Drawing.Size(1487, 113);
+            this.userControlHomeWelcome1.TabIndex = 0;
             // 
-            // UserControlHomeWelcome
+            // UserControlMembers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.radLabel1);
-            this.Name = "UserControlHomeWelcome";
-            this.Size = new System.Drawing.Size(1212, 113);
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
+            this.Controls.Add(this.userControlHomeWelcome1);
+            this.Name = "UserControlMembers";
+            this.Size = new System.Drawing.Size(1487, 714);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-        private Telerik.WinControls.UI.RadLabel radLabel1;
+
+        private Home.UserControlHomeWelcome userControlHomeWelcome1;
     }
 }

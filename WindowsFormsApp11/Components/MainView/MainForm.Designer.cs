@@ -34,8 +34,14 @@
             this.radMenuItem3 = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuItem4 = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuItem5 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem6 = new Telerik.WinControls.UI.RadMenuItem();
             this.userControlListViewMembers1 = new WindowsFormsApp11.Components.UserControlListViewMembers();
             this.userControlHome1 = new WindowsFormsApp11.Components.UserControlHome();
+            this.radMenuItem7 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem8 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem9 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem10 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem11 = new Telerik.WinControls.UI.RadMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
@@ -45,9 +51,10 @@
             this.radMenu1.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.radMenuItem1,
             this.radMenuItem2,
-            this.radMenuItem3});
+            this.radMenuItem3,
+            this.radMenuItem7});
             this.radMenu1.Location = new System.Drawing.Point(0, 0);
-            this.radMenu1.Margin = new System.Windows.Forms.Padding(14, 14, 14, 14);
+            this.radMenu1.Margin = new System.Windows.Forms.Padding(48, 48, 48, 48);
             this.radMenu1.Name = "radMenu1";
             this.radMenu1.Size = new System.Drawing.Size(1369, 32);
             this.radMenu1.TabIndex = 0;
@@ -67,20 +74,28 @@
             // 
             this.radMenuItem3.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.radMenuItem4,
-            this.radMenuItem5});
+            this.radMenuItem5,
+            this.radMenuItem6});
             this.radMenuItem3.Name = "radMenuItem3";
             this.radMenuItem3.Text = "MIEMBROS";
             // 
             // radMenuItem4
             // 
             this.radMenuItem4.Name = "radMenuItem4";
-            this.radMenuItem4.Text = "Miembros o Usuarios Cliente";
+            this.radMenuItem4.Text = "Miembros o usuarios cliente";
             this.radMenuItem4.Click += new System.EventHandler(this.radMenuItem4_Click);
             // 
             // radMenuItem5
             // 
             this.radMenuItem5.Name = "radMenuItem5";
-            this.radMenuItem5.Text = "Renovación de membresías";
+            this.radMenuItem5.Text = "Renovacion de membresias";
+            this.radMenuItem5.Click += new System.EventHandler(this.radMenuItem5_Click);
+            // 
+            // radMenuItem6
+            // 
+            this.radMenuItem6.Name = "radMenuItem6";
+            this.radMenuItem6.Text = "Entrada y Salida";
+            this.radMenuItem6.Click += new System.EventHandler(this.radMenuItem6_Click);
             // 
             // userControlListViewMembers1
             // 
@@ -97,6 +112,36 @@
             this.userControlHome1.Name = "userControlHome1";
             this.userControlHome1.Size = new System.Drawing.Size(1369, 906);
             this.userControlHome1.TabIndex = 2;
+            // 
+            // radMenuItem7
+            // 
+            this.radMenuItem7.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.radMenuItem8,
+            this.radMenuItem9,
+            this.radMenuItem10,
+            this.radMenuItem11});
+            this.radMenuItem7.Name = "radMenuItem7";
+            this.radMenuItem7.Text = "Administracion";
+            // 
+            // radMenuItem8
+            // 
+            this.radMenuItem8.Name = "radMenuItem8";
+            this.radMenuItem8.Text = "Equipo";
+            // 
+            // radMenuItem9
+            // 
+            this.radMenuItem9.Name = "radMenuItem9";
+            this.radMenuItem9.Text = "Membresias";
+            // 
+            // radMenuItem10
+            // 
+            this.radMenuItem10.Name = "radMenuItem10";
+            this.radMenuItem10.Text = "Tipos";
+            // 
+            // radMenuItem11
+            // 
+            this.radMenuItem11.Name = "radMenuItem11";
+            this.radMenuItem11.Text = "Usuarios";
             // 
             // MainForm
             // 
@@ -125,5 +170,11 @@
         private Telerik.WinControls.UI.RadMenuItem radMenuItem5;
         private UserControlListViewMembers userControlListViewMembers1;
         private UserControlHome userControlHome1;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem6;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem7;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem8;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem9;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem10;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem11;
     }
 }
