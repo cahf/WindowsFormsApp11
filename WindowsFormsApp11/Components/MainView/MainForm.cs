@@ -70,10 +70,15 @@ namespace WindowsFormsApp11.Components.MainView
             mainMenuPresenter.getDataUsers();
             this.userControlUsers1.Show();
 
-            
+        }
+
+        public void getDataUserAddForm(String[] datos) {
             
 
 
+                
+
+            
         }
     }  
 }

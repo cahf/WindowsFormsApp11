@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Telerik.WinControls.UI;
 using WindowsFormsApp11.API.response;
+using WindowsFormsApp11.Components.Usuarios.Add;
 using WindowsFormsApp11.Service;
 
 namespace WindowsFormsApp11.Components.Usuarios
@@ -50,6 +51,7 @@ namespace WindowsFormsApp11.Components.Usuarios
             this.radListViewGeneral.Columns.ElementAt(this.radListViewGeneral.Columns.Count - 1).Visible = false;
             //this.radButtoRemoveUsers.Location = new System.Drawing.Point(new Size(this.radListViewGeneral.Size.Width, this.radListViewGeneral.Size.Height));
             this.radButtoRemoveUsers.Location = new Point(this.radListViewGeneral.Size.Width + 10 ,(int)(this.Size.Height * 0.75));
+            this.radButtonAddUsers.Location = new Point(this.radListViewGeneral.Size.Width + 10, (int)(this.Size.Height * 0.85));
 
             foreach (ListViewDetailColumn column in this.radListViewGeneral.Columns)
             {
@@ -102,6 +104,22 @@ namespace WindowsFormsApp11.Components.Usuarios
         private void radListViewGeneral_ItemCheckedChanged(object sender, ListViewItemEventArgs e)
         {
             
+        }
+
+        private void radButtonAddUsers_Click(object sender, EventArgs e)
+        {
+            AddUsersForm mainForm = new AddUsersForm(this);
+            mainForm.ShowDialog();
+        }
+
+        public void getDataUserAddForm(string[] data) {
+
+            string numero = data[0];
+            string correo = data[1];
+            string password = data[2];
+
+
+        
         }
     }
 }

@@ -134,6 +134,12 @@
     <Compile Include="Components\Share\Footer\UserControlFooterSecion1.Designer.cs">
       <DependentUpon>UserControlFooterSecion1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\Usuarios\Add\AddUsersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Components\Usuarios\Add\AddUsersForm.Designer.cs">
+      <DependentUpon>AddUsersForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\Usuarios\UserControlUsers.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -180,6 +186,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Share\Footer\UserControlFooterSecion1.resx">
       <DependentUpon>UserControlFooterSecion1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Usuarios\Add\AddUsersForm.resx">
+      <DependentUpon>AddUsersForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Usuarios\UserControlUsers.resx">
       <DependentUpon>UserControlUsers.cs</DependentUpon>

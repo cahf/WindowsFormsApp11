@@ -31,8 +31,10 @@
             this.radListViewGeneral = new Telerik.WinControls.UI.RadListView();
             this.userControlHomeWelcome1 = new WindowsFormsApp11.Components.Home.UserControlHomeWelcome();
             this.radButtoRemoveUsers = new Telerik.WinControls.UI.RadButton();
+            this.radButtonAddUsers = new Telerik.WinControls.UI.RadButton();
             ((System.ComponentModel.ISupportInitialize)(this.radListViewGeneral)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButtoRemoveUsers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radButtonAddUsers)).BeginInit();
             this.SuspendLayout();
             // 
             // radListViewGeneral
@@ -63,14 +65,25 @@
             this.radButtoRemoveUsers.Name = "radButtoRemoveUsers";
             this.radButtoRemoveUsers.Size = new System.Drawing.Size(110, 24);
             this.radButtoRemoveUsers.TabIndex = 2;
-            this.radButtoRemoveUsers.Text = "Remove";
+            this.radButtoRemoveUsers.Text = "Borrar";
             this.radButtoRemoveUsers.Click += new System.EventHandler(this.radButtoRemoveUsers_Click);
+            // 
+            // radButtonAddUsers
+            // 
+            this.radButtonAddUsers.Location = new System.Drawing.Point(515, 231);
+            this.radButtonAddUsers.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.radButtonAddUsers.Name = "radButtonAddUsers";
+            this.radButtonAddUsers.Size = new System.Drawing.Size(110, 26);
+            this.radButtonAddUsers.TabIndex = 3;
+            this.radButtonAddUsers.Text = "Agregar";
+            this.radButtonAddUsers.Click += new System.EventHandler(this.radButtonAddUsers_Click);
             // 
             // UserControlUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.radButtonAddUsers);
             this.Controls.Add(this.radButtoRemoveUsers);
             this.Controls.Add(this.userControlHomeWelcome1);
             this.Controls.Add(this.radListViewGeneral);
@@ -78,6 +91,7 @@
             this.Size = new System.Drawing.Size(1348, 484);
             ((System.ComponentModel.ISupportInitialize)(this.radListViewGeneral)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButtoRemoveUsers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radButtonAddUsers)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -87,5 +101,6 @@
         private Telerik.WinControls.UI.RadListView radListViewGeneral;
         private Home.UserControlHomeWelcome userControlHomeWelcome1;
         private Telerik.WinControls.UI.RadButton radButtoRemoveUsers;
+        private Telerik.WinControls.UI.RadButton radButtonAddUsers;
     }
 }
