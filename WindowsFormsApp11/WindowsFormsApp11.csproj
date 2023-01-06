@@ -65,7 +65,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API\request\UserAddResquest.cs" />
     <Compile Include="API\response\AttendancesResponse.cs" />
+    <Compile Include="API\response\UsersAddResponse.cs" />
     <Compile Include="API\response\UsersDeleteResponse.cs" />
     <Compile Include="API\response\UsersResponse.cs" />
     <Compile Include="Components\Home\UserControlHomeCarousel.cs">
@@ -152,6 +154,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\LoginService.cs" />
     <Compile Include="Service\MainMenuService.cs" />
+    <Compile Include="Service\MainMenuServiceAsync.cs" />
     <Compile Include="View\Login\ILoginView.cs" />
     <Compile Include="View\MainMenu\IMainMenuView.cs" />
     <EmbeddedResource Include="Components\Home\UserControlHomeCarousel.resx">
@@ -218,7 +221,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="API\request\" />
     <Folder Include="Model\Login\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

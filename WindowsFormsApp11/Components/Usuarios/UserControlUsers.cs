@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Telerik.WinControls.UI;
+using WindowsFormsApp11.API.request;
 using WindowsFormsApp11.API.response;
 using WindowsFormsApp11.Components.Usuarios.Add;
 using WindowsFormsApp11.Service;
@@ -112,11 +113,24 @@ namespace WindowsFormsApp11.Components.Usuarios
             mainForm.ShowDialog();
         }
 
-        public void getDataUserAddForm(string[] data) {
+        public async Task getDataUserAddFormAsync(string[] data) {
 
             string numero = data[0];
             string correo = data[1];
             string password = data[2];
+
+            //string numero = "4425091809";
+            //string correo = "carlos.hernandez@puntosingular.com";
+            //string password = "{}{}CarlosAlberto246";
+
+            UserAddResquest userData = new UserAddResquest(numero,password,correo);
+
+            string response = await MainMenuServiceAsync.AddUser(userData);
+            UsersResponse dataListView = MainMenuService.getUsersList();
+            this.setUsers(dataListView);
+            Console.WriteLine("Respuesta post");
+            Console.WriteLine(response);
+
 
 
         

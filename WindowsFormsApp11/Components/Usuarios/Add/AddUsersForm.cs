@@ -22,13 +22,14 @@ namespace WindowsFormsApp11.Components.Usuarios.Add
             this.userControlUser = userControlUser; 
         }
 
-        private void radButton1_Click(object sender, EventArgs e)
+        private async  void  radButton1_ClickAsync(object sender, EventArgs e)
         {
             string numero = this.radTextBox1.Text;
             string correo = this.radTextBox2.Text;
             string password = this.radTextBox3.Text;
             string[] data = new string[] {numero,correo,password };
-            this.userControlUser.getDataUserAddForm(data);
+            await this.userControlUser.getDataUserAddFormAsync(data);
+            
             this.Close();
 
 

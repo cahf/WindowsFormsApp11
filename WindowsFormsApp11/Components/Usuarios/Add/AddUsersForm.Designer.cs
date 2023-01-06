@@ -103,7 +103,7 @@
             this.radButton1.Size = new System.Drawing.Size(110, 24);
             this.radButton1.TabIndex = 5;
             this.radButton1.Text = "Agregar";
-            this.radButton1.Click += new System.EventHandler(this.radButton1_Click);
+            this.radButton1.Click += new System.EventHandler(this.radButton1_ClickAsync);
             // 
             // AddUsersForm
             // 

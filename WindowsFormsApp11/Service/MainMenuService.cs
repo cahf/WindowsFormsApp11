@@ -106,6 +106,36 @@ namespace WindowsFormsApp11.Service
             return response;
         }
 
+        public static UsersAddResponse AddUser(UserAddResquest dataUser)
+        {
+            HttpWebRequest httpRequest = (HttpWebRequest)WebRequest.Create("https://localhost:44308/api/Users");
+            string dataJson = JsonConvert.SerializeObject(dataUser);
+            var data = Encoding.ASCII.GetBytes(dataJson);
+            httpRequest.Method = "POST";
+            httpRequest.Accept = "application/json";
+            httpRequest.ContentType = "application/json";
+            Stream stream = httpRequest.GetRequestStream();
+            stream.Write(data,0,data.Length);
+            try { 
+            var response = (HttpWebResponse)httpRequest.GetResponse();
+            var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+            }catch (WebException e)
+            {
+                Console.WriteLine("This program is expected to throw WebException on successful run." +
+                                    "\n\nException Message :" + e.Message);
+                if (e.Status == WebExceptionStatus.ProtocolError)
+                {
+                    Console.WriteLine("Status Code : {0}", ((HttpWebResponse)e.Response).StatusCode);
+                    Console.WriteLine("Status Description : {0}", ((HttpWebResponse)e.Response).StatusDescription);
+                }
+            }
+
+
+
+            return null;
+            
+        }
+
 
 
 
