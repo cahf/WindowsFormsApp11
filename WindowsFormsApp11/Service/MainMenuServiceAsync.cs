@@ -15,14 +15,31 @@ namespace WindowsFormsApp11.Service
         static readonly HttpClient client = new HttpClient();
         static readonly string _urlBase = "https://localhost:44308/api";
 
-        public static async Task<string> AddUser(UserAddResquest dataUser)
+
+    //USERS
+
+
+        //AGREGAR USUARIO POST
+        public static async Task<string> AddUser(UserAddResquest dataUser, string idUser)
         {
             string result = "vacio";
             try {
                 var json = JsonConvert.SerializeObject(dataUser);
+                Console.WriteLine("RequestBody");
+                Console.WriteLine(json);
                 var data = new StringContent(json, Encoding.UTF8, "application/json");
-                HttpResponseMessage response = await client.PostAsync(_urlBase + "/Users", data);
-                 result = await response.Content.ReadAsStringAsync();
+                HttpResponseMessage response;
+                if (idUser == null)
+                {
+                    response = await client.PostAsync(_urlBase + "/Users", data);
+                }
+                else {
+                    response = await client.PutAsync(_urlBase + "/Users" + "/" + idUser, data);
+                }
+                
+                
+                
+                result = await response.Content.ReadAsStringAsync();
             } 
             catch (HttpRequestException e) {
 
@@ -37,10 +54,35 @@ namespace WindowsFormsApp11.Service
         
         }
 
+        //OBTENER  USUARIO BY ID 
+
+        public static async Task<string> UpdateUser(UserAddResquest dataUser, int idUser)
+        {
+            string result = "vacio";
+            try
+            {
+                var json = JsonConvert.SerializeObject(dataUser);
+                var data = new StringContent(json, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = await client.PutAsync(_urlBase + "/Users" + "/" + idUser, data);
+                result = await response.Content.ReadAsStringAsync();
+            }
+            catch (HttpRequestException e)
+            {
+
+                Console.WriteLine("\nException Caught!");
+                Console.WriteLine("Message :{0} ", e.Message);
+            }
 
 
 
 
+            return result;
 
         }
+
+
+
+
+
+    }
 }

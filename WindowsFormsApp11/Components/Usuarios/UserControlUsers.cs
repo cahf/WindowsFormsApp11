@@ -53,6 +53,7 @@ namespace WindowsFormsApp11.Components.Usuarios
             //this.radButtoRemoveUsers.Location = new System.Drawing.Point(new Size(this.radListViewGeneral.Size.Width, this.radListViewGeneral.Size.Height));
             this.radButtoRemoveUsers.Location = new Point(this.radListViewGeneral.Size.Width + 10 ,(int)(this.Size.Height * 0.75));
             this.radButtonAddUsers.Location = new Point(this.radListViewGeneral.Size.Width + 10, (int)(this.Size.Height * 0.85));
+            this.radButtonEditUsers.Location = new Point(this.radListViewGeneral.Size.Width + 10, (int)(this.Size.Height * 0.95));
 
             foreach (ListViewDetailColumn column in this.radListViewGeneral.Columns)
             {
@@ -113,7 +114,7 @@ namespace WindowsFormsApp11.Components.Usuarios
             mainForm.ShowDialog();
         }
 
-        public async Task getDataUserAddFormAsync(string[] data) {
+        public async Task getDataUserAddFormAsync(string[] data,string idUser) {
 
             string numero = data[0];
             string correo = data[1];
@@ -125,7 +126,7 @@ namespace WindowsFormsApp11.Components.Usuarios
 
             UserAddResquest userData = new UserAddResquest(numero,password,correo);
 
-            string response = await MainMenuServiceAsync.AddUser(userData);
+            string response = await MainMenuServiceAsync.AddUser(userData,idUser);
             UsersResponse dataListView = MainMenuService.getUsersList();
             this.setUsers(dataListView);
             Console.WriteLine("Respuesta post");
@@ -134,6 +135,20 @@ namespace WindowsFormsApp11.Components.Usuarios
 
 
         
+        }
+
+        private void radButtonEditUsers_Click(object sender, EventArgs e)
+        {
+            ListViewCheckedItemCollection itemsChecked = this.radListViewGeneral.CheckedItems;
+            ListViewDataItem item = itemsChecked[0];
+            string correo = (string)item[item.FieldCount - 4];
+            string telefono = (string)item[item.FieldCount - 2];
+            string password = " ";
+            string id = (string)item[item.FieldCount - 1];
+            AddUsersForm addUserForm = new AddUsersForm(this,telefono,password,correo,id);
+            addUserForm.ShowDialog();
+
+
         }
     }
 }
