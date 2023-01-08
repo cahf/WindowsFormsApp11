@@ -23,6 +23,7 @@ namespace WindowsFormsApp11.Components.MainView
             this.userControlListViewMembers1.Hide();
             this.userControlUsers1.Hide();
             this.userControlHome1.Show();
+            this.userControlCustonListView1.Hide();
             mainMenuPresenter = new MainMenuPresenter(this);
             screenWidth = Screen.FromControl(this).Bounds.Width;
             screenHeigh = Screen.FromControl(this).Bounds.Height;
@@ -55,6 +56,7 @@ namespace WindowsFormsApp11.Components.MainView
             mainMenuPresenter.getDataAttendances();
             this.userControlHome1.Hide();
             this.userControlUsers1.Hide();
+            this.userControlCustonListView1.Hide();
             this.userControlListViewMembers1.Show();
             this.userControlListViewMembers1.Width = (int)(Screen.FromControl(this).Bounds.Width * 0.80);
         }
@@ -65,6 +67,7 @@ namespace WindowsFormsApp11.Components.MainView
 
             this.userControlHome1.Hide();
             this.userControlListViewMembers1.Hide();
+            this.userControlCustonListView1.Hide();
             this.userControlUsers1.Size = new Size((int)(this.screenWidth * 0.50), (int)(this.screenHeigh * 0.50));
             this.userControlUsers1.Location = new Point(0,50);
             mainMenuPresenter.getDataUsers();
@@ -79,6 +82,21 @@ namespace WindowsFormsApp11.Components.MainView
                 
 
             
+        }
+
+         //TIPOS 
+        private void radMenuItem10_Click(object sender, EventArgs e)
+        {
+            this.userControlHome1.Hide();
+            this.userControlListViewMembers1.Hide();
+            this.userControlUsers1.Hide();
+            //Construct  LISTVIEW 
+            this.userControlCustonListView1.buildScreen(new string[] { "Nombre", "Apellidos", "Edad", "id" }, null);
+            //POSITION 
+            this.userControlCustonListView1.Size = new Size((int)(this.screenWidth * 1), (int)(this.screenHeigh * 0.50));
+            this.userControlCustonListView1.Location = new Point(0,50);
+            this.userControlCustonListView1.Show();
+
         }
     }  
 }

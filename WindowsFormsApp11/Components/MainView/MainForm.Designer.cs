@@ -32,9 +32,6 @@ namespace WindowsFormsApp11.Components.MainView
         /// </summary>
         private void InitializeComponent()
         {
-          
-            int screenWidth = Screen.FromControl(this).Bounds.Width;
-            int screenHeigh = Screen.FromControl(this).Bounds.Height;
             this.radMenu1 = new Telerik.WinControls.UI.RadMenu();
             this.radMenuItem1 = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuItem2 = new Telerik.WinControls.UI.RadMenuItem();
@@ -49,7 +46,8 @@ namespace WindowsFormsApp11.Components.MainView
             this.radMenuItem11 = new Telerik.WinControls.UI.RadMenuItem();
             this.userControlHome1 = new WindowsFormsApp11.Components.UserControlHome();
             this.userControlListViewMembers1 = new WindowsFormsApp11.Components.UserControlListViewMembers();
-            this.userControlUsers1 = new WindowsFormsApp11.Components.Usuarios.UserControlUsers(screenWidth,screenHeigh);
+            this.userControlCustonListView1 = new WindowsFormsApp11.Components.Share.CustomListView.UserControlCustonListView();
+            this.userControlUsers1 = new WindowsFormsApp11.Components.Usuarios.UserControlUsers(screenWidth, screenHeigh);
             ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
@@ -62,7 +60,7 @@ namespace WindowsFormsApp11.Components.MainView
             this.radMenuItem3,
             this.radMenuItem7});
             this.radMenu1.Location = new System.Drawing.Point(0, 0);
-            this.radMenu1.Margin = new System.Windows.Forms.Padding(72, 72, 72, 72);
+            this.radMenu1.Margin = new System.Windows.Forms.Padding(108, 108, 108, 108);
             this.radMenu1.Name = "radMenu1";
             this.radMenu1.Size = new System.Drawing.Size(1369, 32);
             this.radMenu1.TabIndex = 0;
@@ -129,6 +127,7 @@ namespace WindowsFormsApp11.Components.MainView
             // 
             this.radMenuItem10.Name = "radMenuItem10";
             this.radMenuItem10.Text = "Tipos";
+            this.radMenuItem10.Click += new System.EventHandler(this.radMenuItem10_Click);
             // 
             // radMenuItem11
             // 
@@ -154,16 +153,25 @@ namespace WindowsFormsApp11.Components.MainView
             // 
             // userControlUsers1
             // 
+            this.userControlUsers1.BackColor = System.Drawing.Color.Transparent;
             this.userControlUsers1.Location = new System.Drawing.Point(0, 379);
             this.userControlUsers1.Name = "userControlUsers1";
             this.userControlUsers1.Size = new System.Drawing.Size(1369, 484);
             this.userControlUsers1.TabIndex = 3;
+            // 
+            // userControlCustonListView1
+            // 
+            this.userControlCustonListView1.Location = new System.Drawing.Point(22, 361);
+            this.userControlCustonListView1.Name = "userControlCustonListView1";
+            this.userControlCustonListView1.Size = new System.Drawing.Size(1233, 476);
+            this.userControlCustonListView1.TabIndex = 4;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1369, 938);
+            this.Controls.Add(this.userControlCustonListView1);
             this.Controls.Add(this.userControlUsers1);
             this.Controls.Add(this.userControlHome1);
             this.Controls.Add(this.userControlListViewMembers1);
@@ -194,5 +202,6 @@ namespace WindowsFormsApp11.Components.MainView
         private Telerik.WinControls.UI.RadMenuItem radMenuItem10;
         private Telerik.WinControls.UI.RadMenuItem radMenuItem11;
         private Usuarios.UserControlUsers userControlUsers1;
+        private Share.CustomListView.UserControlCustonListView userControlCustonListView1;
     }
 }

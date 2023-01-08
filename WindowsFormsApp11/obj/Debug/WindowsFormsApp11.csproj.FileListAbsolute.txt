@@ -35,3 +35,4 @@ C:\Users\chern\source\repos\WindowsFormsApp11\WindowsFormsApp11\obj\Debug\Window
 C:\Users\chern\source\repos\WindowsFormsApp11\WindowsFormsApp11\obj\Debug\WindowsFormsApp11.pdb
 C:\Users\chern\source\repos\WindowsFormsApp11\WindowsFormsApp11\obj\Debug\WindowsFormsApp11.Components.Usuarios.UserControlUsers.resources
 C:\Users\chern\source\repos\WindowsFormsApp11\WindowsFormsApp11\obj\Debug\WindowsFormsApp11.Components.Usuarios.Add.AddUsersForm.resources
+C:\Users\chern\source\repos\WindowsFormsApp11\WindowsFormsApp11\obj\Debug\WindowsFormsApp11.Components.Share.CustomListView.UserControlCustonListView.resources
