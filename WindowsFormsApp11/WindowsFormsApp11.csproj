@@ -65,6 +65,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API\request\UserAddEditRequest.cs" />
     <Compile Include="API\request\UserAddResquest.cs" />
     <Compile Include="API\response\AttendancesResponse.cs" />
     <Compile Include="API\response\UsersAddResponse.cs" />

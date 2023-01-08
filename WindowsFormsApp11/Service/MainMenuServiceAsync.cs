@@ -53,6 +53,43 @@ namespace WindowsFormsApp11.Service
             return result;
         
         }
+        //EDITAR USUARIO POST
+        public static async Task<string> AddUserEditar(UserAddEditRequest dataUser, string idUser)
+        {
+            string result = "vacio";
+            try
+            {
+                var json = JsonConvert.SerializeObject(dataUser);
+                Console.WriteLine("RequestBody");
+                Console.WriteLine(json);
+                var data = new StringContent(json, Encoding.UTF8, "application/json");
+                HttpResponseMessage response;
+                if (idUser == null)
+                {
+                    response = await client.PostAsync(_urlBase + "/Users", data);
+                }
+                else
+                {
+                    response = await client.PutAsync(_urlBase + "/Users" + "/" + idUser, data);
+                }
+
+
+
+                result = await response.Content.ReadAsStringAsync();
+            }
+            catch (HttpRequestException e)
+            {
+
+                Console.WriteLine("\nException Caught!");
+                Console.WriteLine("Message :{0} ", e.Message);
+            }
+
+
+
+
+            return result;
+
+        }
 
         //OBTENER  USUARIO BY ID 
 

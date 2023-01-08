@@ -119,14 +119,21 @@ namespace WindowsFormsApp11.Components.Usuarios
             string numero = data[0];
             string correo = data[1];
             string password = data[2];
-
+            string response = "";
             //string numero = "4425091809";
             //string correo = "carlos.hernandez@puntosingular.com";
             //string password = "{}{}CarlosAlberto246";
 
             UserAddResquest userData = new UserAddResquest(numero,password,correo);
+            UserAddEditRequest userDataEdit = new UserAddEditRequest(numero,password,correo);
+            if (idUser == null)
+            {
+                response = await MainMenuServiceAsync.AddUser(userData, idUser);
+            }
+            else {
 
-            string response = await MainMenuServiceAsync.AddUser(userData,idUser);
+                response = await MainMenuServiceAsync.AddUserEditar(userDataEdit, idUser);
+            }
             UsersResponse dataListView = MainMenuService.getUsersList();
             this.setUsers(dataListView);
             Console.WriteLine("Respuesta post");
