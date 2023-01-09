@@ -60,7 +60,7 @@ namespace WindowsFormsApp11.Components.MainView
             this.radMenuItem3,
             this.radMenuItem7});
             this.radMenu1.Location = new System.Drawing.Point(0, 0);
-            this.radMenu1.Margin = new System.Windows.Forms.Padding(108, 108, 108, 108);
+            this.radMenu1.Margin = new System.Windows.Forms.Padding(162, 162, 162, 162);
             this.radMenu1.Name = "radMenu1";
             this.radMenu1.Size = new System.Drawing.Size(1369, 32);
             this.radMenu1.TabIndex = 0;
@@ -122,6 +122,7 @@ namespace WindowsFormsApp11.Components.MainView
             // 
             this.radMenuItem9.Name = "radMenuItem9";
             this.radMenuItem9.Text = "Membresias";
+            this.radMenuItem9.Click += new System.EventHandler(this.radMenuItem9_Click);
             // 
             // radMenuItem10
             // 
@@ -151,14 +152,6 @@ namespace WindowsFormsApp11.Components.MainView
             this.userControlListViewMembers1.Size = new System.Drawing.Size(1369, 906);
             this.userControlListViewMembers1.TabIndex = 1;
             // 
-            // userControlUsers1
-            // 
-            this.userControlUsers1.BackColor = System.Drawing.Color.Transparent;
-            this.userControlUsers1.Location = new System.Drawing.Point(0, 379);
-            this.userControlUsers1.Name = "userControlUsers1";
-            this.userControlUsers1.Size = new System.Drawing.Size(1369, 484);
-            this.userControlUsers1.TabIndex = 3;
-            // 
             // userControlCustonListView1
             // 
             this.userControlCustonListView1.Location = new System.Drawing.Point(22, 361);
@@ -172,7 +165,6 @@ namespace WindowsFormsApp11.Components.MainView
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1369, 938);
             this.Controls.Add(this.userControlCustonListView1);
-            this.Controls.Add(this.userControlUsers1);
             this.Controls.Add(this.userControlHome1);
             this.Controls.Add(this.userControlListViewMembers1);
             this.Controls.Add(this.radMenu1);

@@ -17,17 +17,20 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
         float columnWidth;
         float columnTotalWidth;
         float heighCenter;
+        string HeaderText;
         public UserControlCustonListView()
         {
             InitializeComponent();
         }
    
 
-        public void buildScreen(string[] headersColumns, Object data) {
+        public void buildScreen(string[] headersColumns, Object data,string HeaderText) {
 
+            this.HeaderText = HeaderText;
             getMeasurements(headersColumns, data);
             arrangeListView(headersColumns, data);
             arrangeButtons();
+            arrangeLabel();
         }
 
 
@@ -72,6 +75,7 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
             
 
 
+            columnTotalWidth -= this.columnWidth;
             this.radListView1.Size = new Size((int)columnTotalWidth,(int)(columnTotalWidth * 0.50));
             this.radListView1.Location = new Point((int)(this.columnWidth * 0.05),(int)this.heighCenter);
             this.radListView1.Columns.ElementAt(this.radListView1.Columns.Count - 1).Visible = false;
@@ -98,11 +102,16 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
                 }
             }
 
+        }
 
-          
+        private void arrangeLabel()
+        {
 
-
+            this.radLabel1.Text = this.HeaderText;
+            this.radLabel1.Font = new Font(radLabel1.Font.FontFamily, 24);
+            this.radLabel1.Location = new Point((int)(this.columnWidth * 0.05), (int)(this.heighCenter * 0.5));
 
         }
+
     }
 }

@@ -51,6 +51,7 @@ namespace WindowsFormsApp11.Components.MainView
 
         }
 
+        // MIEMBROS ENTRADAS Y SALIDAS
         private void radMenuItem6_Click(object sender, EventArgs e)
         {
             mainMenuPresenter.getDataAttendances();
@@ -60,10 +61,10 @@ namespace WindowsFormsApp11.Components.MainView
             this.userControlListViewMembers1.Show();
             this.userControlListViewMembers1.Width = (int)(Screen.FromControl(this).Bounds.Width * 0.80);
         }
-
+        // ADMINISTRACION USUARIOS
         private void radMenuItem11_Click(object sender, EventArgs e)
         {
-            //Vista DE ADMINISTRACION USUARIOS
+            
 
             this.userControlHome1.Hide();
             this.userControlListViewMembers1.Hide();
@@ -75,28 +76,33 @@ namespace WindowsFormsApp11.Components.MainView
 
         }
 
-        public void getDataUserAddForm(String[] datos) {
-            
 
-
-                
-
-            
-        }
-
-         //TIPOS 
+         // ADMINISTRACION TIPOS 
         private void radMenuItem10_Click(object sender, EventArgs e)
         {
             this.userControlHome1.Hide();
             this.userControlListViewMembers1.Hide();
             this.userControlUsers1.Hide();
             //Construct  LISTVIEW 
-            this.userControlCustonListView1.buildScreen(new string[] { "Nombre", "Apellidos", "Edad", "id" }, null);
+            this.userControlCustonListView1.buildScreen(new string[] { "Nombre", "Descripcion", "id" }, null,"Tipos de equipamento");
             //POSITION 
             this.userControlCustonListView1.Size = new Size((int)(this.screenWidth * 1), (int)(this.screenHeigh * 0.50));
             this.userControlCustonListView1.Location = new Point(0,50);
             this.userControlCustonListView1.Show();
 
+        }
+        // ADMINISTRACION MEMEBRESIAS
+        private void radMenuItem9_Click(object sender, EventArgs e)
+        {
+            this.userControlHome1.Hide();
+            this.userControlListViewMembers1.Hide();
+            this.userControlUsers1.Hide();
+            //Construct  LISTVIEW 
+            this.userControlCustonListView1.buildScreen(new string[] { "Nombre", "Costo", "Fecha Creacion","Duracion","id" }, null, "Membresias");
+            //POSITION 
+            this.userControlCustonListView1.Size = new Size((int)(this.screenWidth * 1), (int)(this.screenHeigh * 0.50));
+            this.userControlCustonListView1.Location = new Point(0, 50);
+            this.userControlCustonListView1.Show();
         }
     }  
 }
