@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Telerik.WinControls.UI;
+using WindowsFormsApp11.API.Enums;
+using WindowsFormsApp11.API.genericResponse;
 
 namespace WindowsFormsApp11.Components.Share.CustomListView
 {
@@ -18,27 +21,46 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
         float columnTotalWidth;
         float heighCenter;
         string HeaderText;
+        
+        
         public UserControlCustonListView()
         {
             InitializeComponent();
         }
    
 
-        public void buildScreen(string[] headersColumns, Object data,string HeaderText) {
+        public void buildScreen(string[] headersColumns, string data,string HeaderText, EquipmentType equipmentType) {
 
             this.HeaderText = HeaderText;
             getMeasurements(headersColumns, data);
             arrangeListView(headersColumns, data);
             arrangeButtons();
             arrangeLabel();
+            setDataTable(data, equipmentType);
         }
 
+        private void setDataTable(string data, EquipmentType equipmentType)
+        {
+            ListViewDataItem dataItem = null;
+            switch (equipmentType) {
 
-
-
-
-
-
+                case EquipmentType.GET:
+                    GenericResponse<EquipmentTypesResponse> equipmentResponse = JsonConvert.DeserializeObject<GenericResponse<EquipmentTypesResponse>>(data); ;
+                    for (int i = 0; i < equipmentResponse.ModelGeneric.Length; i++) {
+                        EquipmentTypesResponse model = equipmentResponse.ModelGeneric[i];
+                        dataItem = new ListViewDataItem("ListView"+i,new string[] {
+                        model.Name,
+                        model.Description,
+                        model.Id.ToString()
+                        });
+                        dataItem.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+                        this.radListView1.Items.Add(dataItem);
+                    }
+                    break;
+            
+            
+            }
+        }
 
         private void getMeasurements(string[] headersColumns, Object data)
         {

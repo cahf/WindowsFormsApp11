@@ -47,7 +47,7 @@ namespace WindowsFormsApp11.Components.MainView
             this.userControlListViewMembers1.Hide();
             this.userControlUsers1.Hide();
             //Construct  LISTVIEW 
-            this.userControlCustonListView1.buildScreen(new string[] { "Nombre", "Apellido", "Nacimiento", "Correo", "Finaliza membresia" ,"id"}, null, "Miembros");
+            this.userControlCustonListView1.buildScreen(new string[] { "Nombre", "Apellido", "Nacimiento", "Correo", "Finaliza membresia" ,"id"}, null, "Miembros", API.Enums.EquipmentType.NONE);
             //POSITION 
             this.userControlCustonListView1.Size = new Size((int)(this.screenWidth * 1), (int)(this.screenHeigh * 0.50));
             this.userControlCustonListView1.Location = new Point(0, 50);
@@ -93,7 +93,7 @@ namespace WindowsFormsApp11.Components.MainView
             this.userControlListViewMembers1.Hide();
             this.userControlUsers1.Hide();
             //Construct  LISTVIEW 
-            this.userControlCustonListView1.buildScreen(new string[] { "Nombre", "Descripcion", "id" }, null,"Tipos de equipamento");
+            this.userControlCustonListView1.buildScreen(new string[] { "Nombre", "Descripcion", "id" }, null,"Tipos de equipamento", API.Enums.EquipmentType.NONE);
             //POSITION 
             this.userControlCustonListView1.Size = new Size((int)(this.screenWidth * 1), (int)(this.screenHeigh * 0.50));
             this.userControlCustonListView1.Location = new Point(0,50);
@@ -107,7 +107,7 @@ namespace WindowsFormsApp11.Components.MainView
             this.userControlListViewMembers1.Hide();
             this.userControlUsers1.Hide();
             //Construct  LISTVIEW 
-            this.userControlCustonListView1.buildScreen(new string[] { "Nombre", "Costo", "Fecha Creacion","Duracion","id" }, null, "Membresias");
+            this.userControlCustonListView1.buildScreen(new string[] { "Nombre", "Costo", "Fecha Creacion","Duracion","id" }, null, "Membresias", API.Enums.EquipmentType.NONE);
             //POSITION 
             this.userControlCustonListView1.Size = new Size((int)(this.screenWidth * 1), (int)(this.screenHeigh * 0.50));
             this.userControlCustonListView1.Location = new Point(0, 50);
@@ -119,9 +119,9 @@ namespace WindowsFormsApp11.Components.MainView
             this.userControlHome1.Hide();
             this.userControlListViewMembers1.Hide();
             this.userControlUsers1.Hide();
-            GenericResponse<EquipmentTypesResponse> data = await  mainMenuPresenter.getEquipmentTypesAsync();
+            string data = await  mainMenuPresenter.getEquipmentTypesAsync();
             //Construct  LISTVIEW 
-            this.userControlCustonListView1.buildScreen(new string[] { "Nombre", "Descripcion", "id" }, null, "Tipos de equipamento");
+            this.userControlCustonListView1.buildScreen(new string[] { "Nombre", "Descripcion", "id" }, data, "Tipos de equipamento" , API.Enums.EquipmentType.GET);
             //POSITION 
             this.userControlCustonListView1.Size = new Size((int)(this.screenWidth * 1), (int)(this.screenHeigh * 0.50));
             this.userControlCustonListView1.Location = new Point(0, 50);

@@ -55,19 +55,18 @@ namespace WindowsFormsApp11.Service
         
         }
 
-        public static async Task<GenericResponse<EquipmentTypesResponse>> getEquipmentTypes()
+        public static async Task<string> getEquipmentTypes()
         {
 
-            var result = new GenericResponse<EquipmentTypesResponse>();
+            var result = "";
 
             try {
 
                 HttpResponseMessage response = await client.GetAsync(_urlBase + "/EquipmentTypes");
-                string responseString = await response.Content.ReadAsStringAsync();
-                result = JsonConvert.DeserializeObject<GenericResponse<EquipmentTypesResponse>>(responseString);
-                EquipmentTypesResponse responseEquipment = (EquipmentTypesResponse)result.ModelGeneric.First();
-                Console.WriteLine("DATOS EQUIPMENT");
-                Console.WriteLine(responseEquipment.Name);
+                result = await response.Content.ReadAsStringAsync();
+                //result = JsonConvert.DeserializeObject<GenericResponse<EquipmentTypesResponse>>(responseString);
+                //EquipmentTypesResponse responseEquipment = (EquipmentTypesResponse)result.ModelGeneric.First();
+                
 
 
             } 

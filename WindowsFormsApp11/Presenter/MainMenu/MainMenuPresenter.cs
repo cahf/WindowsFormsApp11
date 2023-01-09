@@ -40,9 +40,9 @@ namespace WindowsFormsApp11.Presenter.MainMenu
 
 
         // MENU ADMINISTRACION OPCION EQUIPO , API ES EquipmentTypes GET
-        public async Task<GenericResponse<EquipmentTypesResponse>> getEquipmentTypesAsync() {
+        public async Task<string> getEquipmentTypesAsync() {
 
-            GenericResponse<EquipmentTypesResponse> data = await MainMenuServiceAsync.getEquipmentTypes();
+            string data = await MainMenuServiceAsync.getEquipmentTypes();
 
 
 
