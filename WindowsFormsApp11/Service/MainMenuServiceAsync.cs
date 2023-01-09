@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using WindowsFormsApp11.API.genericResponse;
 using WindowsFormsApp11.API.request;
 using WindowsFormsApp11.API.response;
 
@@ -53,6 +54,35 @@ namespace WindowsFormsApp11.Service
             return result;
         
         }
+
+        public static async Task<GenericResponse<EquipmentTypesResponse>> getEquipmentTypes()
+        {
+
+            var result = new GenericResponse<EquipmentTypesResponse>();
+
+            try {
+
+                HttpResponseMessage response = await client.GetAsync(_urlBase + "/EquipmentTypes");
+                string responseString = await response.Content.ReadAsStringAsync();
+                result = JsonConvert.DeserializeObject<GenericResponse<EquipmentTypesResponse>>(responseString);
+                EquipmentTypesResponse responseEquipment = (EquipmentTypesResponse)result.ModelGeneric.First();
+                Console.WriteLine("DATOS EQUIPMENT");
+                Console.WriteLine(responseEquipment.Name);
+
+
+            } 
+            
+            catch (HttpRequestException e) {
+
+
+                Console.WriteLine("\nException Caught!");
+                Console.WriteLine("Message :{0} ", e.Message);
+            }
+
+
+            return result;
+        }
+
         //EDITAR USUARIO POST
         public static async Task<string> AddUserEditar(UserAddEditRequest dataUser, string idUser)
         {

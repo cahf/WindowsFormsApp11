@@ -44,10 +44,10 @@ namespace WindowsFormsApp11.Components.MainView
             this.radMenuItem9 = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuItem10 = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuItem11 = new Telerik.WinControls.UI.RadMenuItem();
+            this.userControlUsers1 = new WindowsFormsApp11.Components.Usuarios.UserControlUsers(screenWidth, screenHeigh);
             this.userControlHome1 = new WindowsFormsApp11.Components.UserControlHome();
             this.userControlListViewMembers1 = new WindowsFormsApp11.Components.UserControlListViewMembers();
             this.userControlCustonListView1 = new WindowsFormsApp11.Components.Share.CustomListView.UserControlCustonListView();
-            this.userControlUsers1 = new WindowsFormsApp11.Components.Usuarios.UserControlUsers(screenWidth, screenHeigh);
             ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
@@ -60,7 +60,7 @@ namespace WindowsFormsApp11.Components.MainView
             this.radMenuItem3,
             this.radMenuItem7});
             this.radMenu1.Location = new System.Drawing.Point(0, 0);
-            this.radMenu1.Margin = new System.Windows.Forms.Padding(162, 162, 162, 162);
+            this.radMenu1.Margin = new System.Windows.Forms.Padding(243, 243, 243, 243);
             this.radMenu1.Name = "radMenu1";
             this.radMenu1.Size = new System.Drawing.Size(1369, 32);
             this.radMenu1.TabIndex = 0;
@@ -117,6 +117,7 @@ namespace WindowsFormsApp11.Components.MainView
             // 
             this.radMenuItem8.Name = "radMenuItem8";
             this.radMenuItem8.Text = "Equipo";
+            this.radMenuItem8.Click += new System.EventHandler(this.radMenuItem8_Click);
             // 
             // radMenuItem9
             // 

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Telerik.WinControls;
+using WindowsFormsApp11.API.genericResponse;
 using WindowsFormsApp11.Components.Usuarios;
 using WindowsFormsApp11.Presenter.MainMenu;
 using WindowsFormsApp11.View.MainMenu;
@@ -39,13 +40,21 @@ namespace WindowsFormsApp11.Components.MainView
         {
 
         }
-
+        // MIEMBROS MIEMBROS
         private void radMenuItem4_Click(object sender, EventArgs e)
         {
-           
+            this.userControlHome1.Hide();
+            this.userControlListViewMembers1.Hide();
+            this.userControlUsers1.Hide();
+            //Construct  LISTVIEW 
+            this.userControlCustonListView1.buildScreen(new string[] { "Nombre", "Apellido", "Nacimiento", "Correo", "Finaliza membresia" ,"id"}, null, "Miembros");
+            //POSITION 
+            this.userControlCustonListView1.Size = new Size((int)(this.screenWidth * 1), (int)(this.screenHeigh * 0.50));
+            this.userControlCustonListView1.Location = new Point(0, 50);
+            this.userControlCustonListView1.Show();
 
         }
-
+        // MIEMBROS RENOVACION DE MEMBRESIAS
         private void radMenuItem5_Click(object sender, EventArgs e)
         {
 
@@ -99,6 +108,20 @@ namespace WindowsFormsApp11.Components.MainView
             this.userControlUsers1.Hide();
             //Construct  LISTVIEW 
             this.userControlCustonListView1.buildScreen(new string[] { "Nombre", "Costo", "Fecha Creacion","Duracion","id" }, null, "Membresias");
+            //POSITION 
+            this.userControlCustonListView1.Size = new Size((int)(this.screenWidth * 1), (int)(this.screenHeigh * 0.50));
+            this.userControlCustonListView1.Location = new Point(0, 50);
+            this.userControlCustonListView1.Show();
+        }
+        // ADMINISTRACION EQUIPO
+        private async void radMenuItem8_Click(object sender, EventArgs e)
+        {
+            this.userControlHome1.Hide();
+            this.userControlListViewMembers1.Hide();
+            this.userControlUsers1.Hide();
+            GenericResponse<EquipmentTypesResponse> data = await  mainMenuPresenter.getEquipmentTypesAsync();
+            //Construct  LISTVIEW 
+            this.userControlCustonListView1.buildScreen(new string[] { "Nombre", "Descripcion", "id" }, null, "Tipos de equipamento");
             //POSITION 
             this.userControlCustonListView1.Size = new Size((int)(this.screenWidth * 1), (int)(this.screenHeigh * 0.50));
             this.userControlCustonListView1.Location = new Point(0, 50);

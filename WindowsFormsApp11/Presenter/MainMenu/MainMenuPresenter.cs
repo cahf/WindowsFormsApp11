@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WindowsFormsApp11.API.genericResponse;
 using WindowsFormsApp11.API.request;
 using WindowsFormsApp11.API.response;
 using WindowsFormsApp11.Service;
@@ -36,7 +37,19 @@ namespace WindowsFormsApp11.Presenter.MainMenu
 
         
         }
-        
+
+
+        // MENU ADMINISTRACION OPCION EQUIPO , API ES EquipmentTypes GET
+        public async Task<GenericResponse<EquipmentTypesResponse>> getEquipmentTypesAsync() {
+
+            GenericResponse<EquipmentTypesResponse> data = await MainMenuServiceAsync.getEquipmentTypes();
+
+
+
+            return data;
+
+        }
+
 
 
 
