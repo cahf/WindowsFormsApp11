@@ -13,5 +13,8 @@ namespace WindowsFormsApp11.View.MainMenu
         UserControlListViewMembers listViewUserControl { get; set; }
 
         UserControlUsers UsersUserControl { get; set; }
+         void DeleteData(object sender, EventArgs e);
+         void PostData(object sender, EventArgs e);
+         void UpdateData(object sender, EventArgs e);
     }
 }

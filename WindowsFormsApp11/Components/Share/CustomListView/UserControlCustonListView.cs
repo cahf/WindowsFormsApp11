@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using Telerik.WinControls.UI;
 using WindowsFormsApp11.API.Enums;
 using WindowsFormsApp11.API.genericResponse;
+using WindowsFormsApp11.Components.PostPutDelGeneric;
 
 namespace WindowsFormsApp11.Components.Share.CustomListView
 {
@@ -21,15 +22,18 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
         float columnTotalWidth;
         float heighCenter;
         string HeaderText;
-        
-        
+        public event EventHandler PostDataHandler;
+        public event EventHandler DeleteDataHandler;
+        public event EventHandler PutDataHandler;
+
+
         public UserControlCustonListView()
         {
             InitializeComponent();
         }
    
 
-        public void buildScreen(string[] headersColumns, string data,string HeaderText, EquipmentType equipmentType) {
+        public void buildScreen(string[] headersColumns, string data,string HeaderText, EquipmentType equipmentType,Dictionary<string,string> fieldsData = null) {
 
             this.HeaderText = HeaderText;
             getMeasurements(headersColumns, data);
@@ -135,5 +139,20 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
 
         }
 
+
+        private void postDataGeneric(object sender, EventArgs e ) {
+
+           if(this.PostDataHandler != null)
+                this.PostDataHandler(sender, e);
+        
+        
+        }
+
+        private void radButton1_Click(object sender, EventArgs e)
+        {
+            PostFormGeneric postForm = new PostFormGeneric();
+            postForm.PostDataHandler += new EventHandler(postDataGeneric);
+            postForm.ShowDialog();
+        }
     }
 }

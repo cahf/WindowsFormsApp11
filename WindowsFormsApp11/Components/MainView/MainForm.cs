@@ -18,6 +18,9 @@ namespace WindowsFormsApp11.Components.MainView
         readonly MainMenuPresenter mainMenuPresenter = null;
         readonly int screenWidth;
         readonly int screenHeigh;
+
+      
+
         public MainForm()
         {
             InitializeComponent();
@@ -28,6 +31,9 @@ namespace WindowsFormsApp11.Components.MainView
             mainMenuPresenter = new MainMenuPresenter(this);
             screenWidth = Screen.FromControl(this).Bounds.Width;
             screenHeigh = Screen.FromControl(this).Bounds.Height;
+
+  
+
             //mainMenuPresenter.getDataAttendances();
         }
 
@@ -35,6 +41,7 @@ namespace WindowsFormsApp11.Components.MainView
 
         public UserControlUsers UsersUserControl { get { return this.userControlUsers1; } set { this.userControlUsers1 = value; } }
 
+        public MainMenuPresenter MainMenuPresenter => mainMenuPresenter;
 
         private void radMenuItem2_Click(object sender, EventArgs e)
         {
@@ -63,7 +70,7 @@ namespace WindowsFormsApp11.Components.MainView
         // MIEMBROS ENTRADAS Y SALIDAS
         private void radMenuItem6_Click(object sender, EventArgs e)
         {
-            mainMenuPresenter.getDataAttendances();
+            MainMenuPresenter.getDataAttendances();
             this.userControlHome1.Hide();
             this.userControlUsers1.Hide();
             this.userControlCustonListView1.Hide();
@@ -80,7 +87,7 @@ namespace WindowsFormsApp11.Components.MainView
             this.userControlCustonListView1.Hide();
             this.userControlUsers1.Size = new Size((int)(this.screenWidth * 0.50), (int)(this.screenHeigh * 0.50));
             this.userControlUsers1.Location = new Point(0,50);
-            mainMenuPresenter.getDataUsers();
+            MainMenuPresenter.getDataUsers();
             this.userControlUsers1.Show();
 
         }
@@ -119,13 +126,30 @@ namespace WindowsFormsApp11.Components.MainView
             this.userControlHome1.Hide();
             this.userControlListViewMembers1.Hide();
             this.userControlUsers1.Hide();
-            string data = await  mainMenuPresenter.getEquipmentTypesAsync();
+            string data = await  MainMenuPresenter.getEquipmentTypesAsync();
             //Construct  LISTVIEW 
             this.userControlCustonListView1.buildScreen(new string[] { "Nombre", "Descripcion", "id" }, data, "Tipos de equipamento" , API.Enums.EquipmentType.GET);
+            this.userControlCustonListView1.PostDataHandler += new EventHandler(PostData);
             //POSITION 
             this.userControlCustonListView1.Size = new Size((int)(this.screenWidth * 1), (int)(this.screenHeigh * 0.50));
             this.userControlCustonListView1.Location = new Point(0, 50);
             this.userControlCustonListView1.Show();
+        }
+
+        public void DeleteData(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void PostData(object sender, EventArgs e)
+        {
+            Console.WriteLine(sender);
+            throw new NotImplementedException();
+        }
+
+        public void UpdateData(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }  
 }

@@ -42,47 +42,48 @@
             // 
             // radButton1
             // 
-            this.radButton1.Location = new System.Drawing.Point(340, 36);
-            this.radButton1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.radButton1.Location = new System.Drawing.Point(510, 54);
+            this.radButton1.Margin = new System.Windows.Forms.Padding(9, 9, 9, 9);
             this.radButton1.Name = "radButton1";
-            this.radButton1.Size = new System.Drawing.Size(206, 54);
+            this.radButton1.Size = new System.Drawing.Size(309, 81);
             this.radButton1.TabIndex = 0;
             this.radButton1.Text = "Agregar";
+            this.radButton1.Click += new System.EventHandler(this.radButton1_Click);
             // 
             // radButton2
             // 
-            this.radButton2.Location = new System.Drawing.Point(600, 36);
-            this.radButton2.Margin = new System.Windows.Forms.Padding(9, 9, 9, 9);
+            this.radButton2.Location = new System.Drawing.Point(900, 54);
+            this.radButton2.Margin = new System.Windows.Forms.Padding(14, 14, 14, 14);
             this.radButton2.Name = "radButton2";
-            this.radButton2.Size = new System.Drawing.Size(213, 54);
+            this.radButton2.Size = new System.Drawing.Size(320, 81);
             this.radButton2.TabIndex = 1;
             this.radButton2.Text = "Actualizar";
             // 
             // radButton3
             // 
-            this.radButton3.Location = new System.Drawing.Point(852, 36);
-            this.radButton3.Margin = new System.Windows.Forms.Padding(9, 9, 9, 9);
+            this.radButton3.Location = new System.Drawing.Point(1278, 54);
+            this.radButton3.Margin = new System.Windows.Forms.Padding(14, 14, 14, 14);
             this.radButton3.Name = "radButton3";
-            this.radButton3.Size = new System.Drawing.Size(218, 54);
+            this.radButton3.Size = new System.Drawing.Size(327, 81);
             this.radButton3.TabIndex = 1;
             this.radButton3.Text = "Eliminar";
             // 
             // radListView1
             // 
-            this.radListView1.GroupIndent = 57;
-            this.radListView1.GroupItemSize = new System.Drawing.Size(450, 45);
-            this.radListView1.HeaderHeight = 78.75F;
-            this.radListView1.ItemSize = new System.Drawing.Size(450, 45);
-            this.radListView1.Location = new System.Drawing.Point(321, 207);
-            this.radListView1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.radListView1.GroupIndent = 86;
+            this.radListView1.GroupItemSize = new System.Drawing.Size(675, 68);
+            this.radListView1.HeaderHeight = 118.125F;
+            this.radListView1.ItemSize = new System.Drawing.Size(675, 68);
+            this.radListView1.Location = new System.Drawing.Point(482, 310);
+            this.radListView1.Margin = new System.Windows.Forms.Padding(9, 9, 9, 9);
             this.radListView1.Name = "radListView1";
-            this.radListView1.Size = new System.Drawing.Size(459, 142);
+            this.radListView1.Size = new System.Drawing.Size(688, 213);
             this.radListView1.TabIndex = 2;
             // 
             // radLabel1
             // 
-            this.radLabel1.Location = new System.Drawing.Point(155, 124);
-            this.radLabel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radLabel1.Location = new System.Drawing.Point(232, 186);
+            this.radLabel1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.radLabel1.Name = "radLabel1";
             this.radLabel1.Size = new System.Drawing.Size(83, 28);
             this.radLabel1.TabIndex = 3;

@@ -86,6 +86,24 @@
     <Compile Include="Components\Members\VirtualGrid\UserControlMembersVirtualGrid.Designer.cs">
       <DependentUpon>UserControlMembersVirtualGrid.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\PostPutDelGeneric\PostFormGeneric.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Components\PostPutDelGeneric\PostFormGeneric.Designer.cs">
+      <DependentUpon>PostFormGeneric.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\PostPutDelGeneric\DeleteFormGeneric.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Components\PostPutDelGeneric\DeleteFormGeneric.Designer.cs">
+      <DependentUpon>DeleteFormGeneric.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\PostPutDelGeneric\PutFormGeneric.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Components\PostPutDelGeneric\PutFormGeneric.Designer.cs">
+      <DependentUpon>PutFormGeneric.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\Share\CustomListView\UserControlCustonListView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -172,6 +190,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Members\VirtualGrid\UserControlMembersVirtualGrid.resx">
       <DependentUpon>UserControlMembersVirtualGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\PostPutDelGeneric\PostFormGeneric.resx">
+      <DependentUpon>PostFormGeneric.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Share\CustomListView\UserControlCustonListView.resx">
       <DependentUpon>UserControlCustonListView.cs</DependentUpon>
