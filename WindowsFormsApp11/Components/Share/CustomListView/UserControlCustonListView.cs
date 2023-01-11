@@ -35,7 +35,7 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
         }
    
 
-        public void buildScreen(List<GenericRequest> genericRequest, string data,string HeaderText, EquipmentType equipmentType) {
+        public void buildScreen(List<GenericRequest> genericRequest, string data,string HeaderText, HttpType equipmentType) {
 
             this.HeaderText = HeaderText;
             getMeasurements(genericRequest, data);
@@ -46,12 +46,12 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
             this.formFields = genericRequest;
         }
 
-        private void setDataTable(string data, EquipmentType equipmentType)
+        private void setDataTable(string data, HttpType equipmentType)
         {
             ListViewDataItem dataItem = null;
             switch (equipmentType) {
 
-                case EquipmentType.GET:
+                case HttpType.GET:
                     GenericResponse<EquipmentTypesResponse> equipmentResponse = JsonConvert.DeserializeObject<GenericResponse<EquipmentTypesResponse>>(data); ;
                     for (int i = 0; i < equipmentResponse.ModelGeneric.Length; i++) {
                         EquipmentTypesResponse model = equipmentResponse.ModelGeneric[i];

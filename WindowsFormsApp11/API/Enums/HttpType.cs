@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp11.API.Enums
 {
-   public enum EquipmentType
+   public enum HttpType
     {
         GET,
         POST,
