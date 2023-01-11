@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Telerik.WinControls.UI;
 using WindowsFormsApp11.API.Enums;
+using WindowsFormsApp11.API.genericRequest;
 using WindowsFormsApp11.API.genericResponse;
 using WindowsFormsApp11.Components.PostPutDelGeneric;
 
@@ -25,7 +26,7 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
         public event EventHandler PostDataHandler;
         public event EventHandler DeleteDataHandler;
         public event EventHandler PutDataHandler;
-        string[] formFields;
+        List<GenericRequest> formFields;
 
 
         public UserControlCustonListView()
@@ -34,15 +35,15 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
         }
    
 
-        public void buildScreen(string[] headersColumns, string data,string HeaderText, EquipmentType equipmentType,string[] fieldsData = null) {
+        public void buildScreen(List<GenericRequest> genericRequest, string data,string HeaderText, EquipmentType equipmentType) {
 
             this.HeaderText = HeaderText;
-            getMeasurements(headersColumns, data);
-            arrangeListView(headersColumns, data);
+            getMeasurements(genericRequest, data);
+            arrangeListView(genericRequest, data);
             arrangeButtons();
             arrangeLabel();
             setDataTable(data, equipmentType);
-            this.formFields = fieldsData;
+            this.formFields = genericRequest;
         }
 
         private void setDataTable(string data, EquipmentType equipmentType)
@@ -68,11 +69,11 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
             }
         }
 
-        private void getMeasurements(string[] headersColumns, Object data)
+        private void getMeasurements(List<GenericRequest> headersColumns, Object data)
         {
 
-            float columnWidth = (int)((this.Size.Width * 0.75))/headersColumns.Length;
-            float columnTotalWidth = columnWidth * headersColumns.Length;
+            float columnWidth = (int)((this.Size.Width * 0.75))/headersColumns.Count;
+            float columnTotalWidth = columnWidth * headersColumns.Count;
             float heighCenter = this.Size.Height * 0.5F;
 
             this.columnWidth = columnWidth;
@@ -83,16 +84,16 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
 
         }
 
-        private void arrangeListView(string[] headersColumns, Object data) {
+        private void arrangeListView(List<GenericRequest> headersColumns, Object data) {
 
             this.radListView1.ViewType = ListViewType.DetailsView;
             this.radListView1.ShowCheckBoxes = true;
             ListViewDetailColumn listViewDetailColumn;
-            for (int i = 0; i < headersColumns.Length; i++) {
+            for (int i = 0; i < headersColumns.Count; i++) {
 
-                string columnName = headersColumns[i];
-                listViewDetailColumn = new ListViewDetailColumn(columnName, columnName);
-                listViewDetailColumn.HeaderText = columnName.ToUpper();
+                GenericRequest columnName = headersColumns.ElementAt(i);
+                listViewDetailColumn = new ListViewDetailColumn(columnName.TextLabel, columnName.TextLabel);
+                listViewDetailColumn.HeaderText = columnName.TextLabel.ToUpper();
                 listViewDetailColumn.MaxWidth = this.columnWidth;
                 listViewDetailColumn.MinWidth = this.columnWidth;
                 listViewDetailColumn.Width = this.columnWidth;
@@ -123,7 +124,6 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
 
                 if (control.GetType().ToString() == "Telerik.WinControls.UI.RadButton")
                 {
-                    Console.WriteLine(control.GetType().ToString());
                     RadButton button = (RadButton)control;
                     button.Size = new System.Drawing.Size((int)(this.columnWidth * 0.75F), (int)(this.columnWidth * 0.15F));
                     button.Location = new System.Drawing.Point((int)(this.columnTotalWidth + this.columnWidth * 0.10),(int)this.heighCenter + (verticalSpaceButtons += (int)(this.columnWidth * 0.20F)));
@@ -152,7 +152,7 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
 
         private void radButton1_Click(object sender, EventArgs e)
         {
-            PostFormGeneric postForm = new PostFormGeneric(null);
+            PostFormGeneric postForm = new PostFormGeneric(formFields);
             postForm.PostDataHandler += new EventHandler(postDataGeneric);
             postForm.ShowDialog();
         }

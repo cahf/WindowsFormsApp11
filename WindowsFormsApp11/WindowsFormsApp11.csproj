@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API\Enums\EquipmentType.cs" />
+    <Compile Include="API\genericRequest\GenericRequest.cs" />
     <Compile Include="API\genericResponse\EquipmentTypesResponse.cs" />
     <Compile Include="API\genericResponse\GenericResponse.cs" />
     <Compile Include="API\request\UserAddEditRequest.cs" />

@@ -7,19 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp11.API.genericRequest;
 
 namespace WindowsFormsApp11.Components.PostPutDelGeneric
 {
     public partial class PostFormGeneric : Form
     {
         public event EventHandler PostDataHandler;
-        string[] formFields;
-        public PostFormGeneric(string[] formFields)
+        List<GenericRequest> formFields;
+        public PostFormGeneric(List<GenericRequest> formFields)
         {
 
             InitializeComponent();
             this.AdjustFormScrollbars(true);
-            formFields = new string[] { "nombre","apellido", "edad","inicio","final"};
+            //formFields = new List<GenericRequest> { new GenericRequest("nombre", null, "name"), new GenericRequest("Descripcion", null, "description"), };
             this.formFields = formFields;
             this.buildForm();
         }
@@ -34,7 +35,7 @@ namespace WindowsFormsApp11.Components.PostPutDelGeneric
             int verticalSpace = 0;
             int zindex = -1;
             verticalSpace += (int)(formHeight * 0.15);
-            for (int i = 0; i < formFields.Length; i++) {
+            for (int i = 0; i < formFields.Count; i++) {
                 radLabel = new Telerik.WinControls.UI.RadLabel();
                 radTexbox = new Telerik.WinControls.UI.RadTextBox();
                 ((System.ComponentModel.ISupportInitialize)(radLabel)).BeginInit();
@@ -44,15 +45,15 @@ namespace WindowsFormsApp11.Components.PostPutDelGeneric
                 verticalSpace += 36;
                 //radlabel
                 radLabel.Location = new System.Drawing.Point((int)((formWidth * 0.5) - radTextboxWidth), verticalSpace);
-                radLabel.Name = formFields[i];
+                radLabel.Name = formFields.ElementAt(i).TextLabel;
                 radLabel.Size = new System.Drawing.Size(radTextboxWidth, 36);
                 radLabel.TabIndex = zindex;
-                radLabel.Text = formFields[i];
+                radLabel.Text = formFields.ElementAt(i).TextLabel;
                 //radTextbox
                 verticalSpace += 36;
                 zindex++;
                 radTexbox.Location = new System.Drawing.Point((int)((formWidth * 0.5) - radTextboxWidth), verticalSpace);
-                radTexbox.Name = formFields[i];
+                radTexbox.Name = formFields.ElementAt(i).TextLabel;
                 radTexbox.Size = new System.Drawing.Size(radTextboxWidth, 36);
                 radTexbox.TabIndex = zindex;
                 radTexbox.Text = "";
@@ -90,17 +91,21 @@ namespace WindowsFormsApp11.Components.PostPutDelGeneric
         private void radButtonAgregar_Click(object sender, EventArgs e)
         {
 
-            Dictionary<string,string> fieldValuePairs = new Dictionary<string,string>();
 
-            for (int i = 0; i < this.formFields.Length; i++) {
+            for (int i = 0; i < this.formFields.Count; i++) {
 
-                string fieldName = this.formFields[i];
-                string fieldNameValue = getFieldNameValue(fieldName);
-                fieldValuePairs.Add(fieldName, fieldNameValue);
+                string textLabel = formFields.ElementAt(i).TextLabel;
+                string velue = getFieldNameValue(textLabel);
+                foreach (GenericRequest genericRequest in formFields) {
+                        
+                    if(genericRequest.TextLabel == textLabel)
+                        genericRequest.Value = velue;
+                
+                }       
+
             }
 
-            Console.WriteLine(fieldValuePairs);
-            PostDataHandler.Invoke("Carlos alberto", null);
+            PostDataHandler.Invoke(formFields, null);
         }
 
         private string getFieldNameValue(string fieldName)
