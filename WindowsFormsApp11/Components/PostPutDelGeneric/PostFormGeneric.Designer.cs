@@ -28,35 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.radButton1 = new Telerik.WinControls.UI.RadButton();
-            ((System.ComponentModel.ISupportInitialize)(this.radButton1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // radButton1
-            // 
-            this.radButton1.Location = new System.Drawing.Point(345, 161);
-            this.radButton1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.radButton1.Name = "radButton1";
-            this.radButton1.Size = new System.Drawing.Size(110, 24);
-            this.radButton1.TabIndex = 0;
-            this.radButton1.Text = "radButton1";
-            this.radButton1.Click += new System.EventHandler(this.radButton1_Click);
             // 
             // PostFormGeneric
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.radButton1);
             this.Name = "PostFormGeneric";
             this.Text = "AddFormGeneric";
-            ((System.ComponentModel.ISupportInitialize)(this.radButton1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private Telerik.WinControls.UI.RadButton radButton1;
     }
 }

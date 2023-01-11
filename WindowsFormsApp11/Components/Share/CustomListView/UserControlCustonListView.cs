@@ -25,6 +25,7 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
         public event EventHandler PostDataHandler;
         public event EventHandler DeleteDataHandler;
         public event EventHandler PutDataHandler;
+        string[] formFields;
 
 
         public UserControlCustonListView()
@@ -33,7 +34,7 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
         }
    
 
-        public void buildScreen(string[] headersColumns, string data,string HeaderText, EquipmentType equipmentType,Dictionary<string,string> fieldsData = null) {
+        public void buildScreen(string[] headersColumns, string data,string HeaderText, EquipmentType equipmentType,string[] fieldsData = null) {
 
             this.HeaderText = HeaderText;
             getMeasurements(headersColumns, data);
@@ -41,6 +42,7 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
             arrangeButtons();
             arrangeLabel();
             setDataTable(data, equipmentType);
+            this.formFields = fieldsData;
         }
 
         private void setDataTable(string data, EquipmentType equipmentType)
@@ -150,7 +152,7 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
 
         private void radButton1_Click(object sender, EventArgs e)
         {
-            PostFormGeneric postForm = new PostFormGeneric();
+            PostFormGeneric postForm = new PostFormGeneric(null);
             postForm.PostDataHandler += new EventHandler(postDataGeneric);
             postForm.ShowDialog();
         }
