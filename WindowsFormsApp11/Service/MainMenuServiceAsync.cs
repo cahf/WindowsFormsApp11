@@ -2,9 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using WindowsFormsApp11.API.Enums;
 using WindowsFormsApp11.API.genericResponse;
 using WindowsFormsApp11.API.request;
 using WindowsFormsApp11.API.response;
@@ -130,6 +132,48 @@ namespace WindowsFormsApp11.Service
                 var json = JsonConvert.SerializeObject(dataUser);
                 var data = new StringContent(json, Encoding.UTF8, "application/json");
                 HttpResponseMessage response = await client.PutAsync(_urlBase + "/Users" + "/" + idUser, data);
+                result = await response.Content.ReadAsStringAsync();
+            }
+            catch (HttpRequestException e)
+            {
+
+                Console.WriteLine("\nException Caught!");
+                Console.WriteLine("Message :{0} ", e.Message);
+            }
+
+
+
+
+            return result;
+
+        }
+
+
+
+        // GENERICS 
+
+        //POST GENERIC
+        public static async Task<string> makePost(String jsonRquest,EndPointsAPI endpoint, HttpType accion)
+        {
+            string result = "vacio";
+            try
+            {
+
+                var data = new StringContent(jsonRquest, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.BadRequest);
+
+                switch (endpoint) {
+
+                    case EndPointsAPI.EquipmentTypes:
+                        if (accion == HttpType.POST)
+                                response = await client.PostAsync(_urlBase + "/EquipmentTypes",data);
+                        break;
+                    default:
+                        response = new HttpResponseMessage(HttpStatusCode.BadRequest);
+                    break;
+                                
+                }
+                
                 result = await response.Content.ReadAsStringAsync();
             }
             catch (HttpRequestException e)

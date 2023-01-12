@@ -1,11 +1,14 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Telerik.WinControls;
+using WindowsFormsApp11.API.Enums;
 using WindowsFormsApp11.API.genericRequest;
 using WindowsFormsApp11.API.genericResponse;
 using WindowsFormsApp11.Components.Usuarios;
@@ -55,7 +58,7 @@ namespace WindowsFormsApp11.Components.MainView
             this.userControlListViewMembers1.Hide();
             this.userControlUsers1.Hide();
             //Construct  LISTVIEW 
-            this.userControlCustonListView1.buildScreen(new List<GenericRequest> { new GenericRequest("nombre", null, "name", API.Enums.EndPointsAPI.EquipmentTypes, API.Enums.HttpType.POST), new GenericRequest("Descripcion", null, "description", API.Enums.EndPointsAPI.EquipmentTypes, API.Enums.HttpType.POST), }, null, "Miembros", API.Enums.HttpType.NONE);
+            //this.userControlCustonListView1.buildScreen(new List<GenericRequest> { new GenericRequest("nombre", null, "name", API.Enums.EndPointsAPI.EquipmentTypes, API.Enums.HttpType.POST), new GenericRequest("Descripcion", null, "description", API.Enums.EndPointsAPI.EquipmentTypes, API.Enums.HttpType.POST), }, null, "Miembros", API.Enums.HttpType.NONE);
             //POSITION 
             this.userControlCustonListView1.Size = new Size((int)(this.screenWidth * 1), (int)(this.screenHeigh * 0.50));
             this.userControlCustonListView1.Location = new Point(0, 50);
@@ -101,7 +104,7 @@ namespace WindowsFormsApp11.Components.MainView
             this.userControlListViewMembers1.Hide();
             this.userControlUsers1.Hide();
             //Construct  LISTVIEW 
-            this.userControlCustonListView1.buildScreen(new List<GenericRequest> { new GenericRequest("nombre", null, "name", API.Enums.EndPointsAPI.EquipmentTypes, API.Enums.HttpType.POST), new GenericRequest("Descripcion", null, "description", API.Enums.EndPointsAPI.EquipmentTypes, API.Enums.HttpType.POST), }, null,"Tipos de equipamento", API.Enums.HttpType.NONE);
+            //this.userControlCustonListView1.buildScreen(new List<GenericRequest> { new GenericRequest("nombre", null, "name", API.Enums.EndPointsAPI.EquipmentTypes, API.Enums.HttpType.POST), new GenericRequest("Descripcion", null, "description", API.Enums.EndPointsAPI.EquipmentTypes, API.Enums.HttpType.POST), }, null,"Tipos de equipamento", API.Enums.HttpType.NONE);
             //POSITION 
             this.userControlCustonListView1.Size = new Size((int)(this.screenWidth * 1), (int)(this.screenHeigh * 0.50));
             this.userControlCustonListView1.Location = new Point(0,50);
@@ -115,7 +118,7 @@ namespace WindowsFormsApp11.Components.MainView
             this.userControlListViewMembers1.Hide();
             this.userControlUsers1.Hide();
             //Construct  LISTVIEW 
-            this.userControlCustonListView1.buildScreen(new List<GenericRequest> { new GenericRequest("nombre", null, "name", API.Enums.EndPointsAPI.EquipmentTypes, API.Enums.HttpType.POST), new GenericRequest("Descripcion", null, "description", API.Enums.EndPointsAPI.EquipmentTypes, API.Enums.HttpType.POST), }, null, "Membresias", API.Enums.HttpType.NONE);
+            //this.userControlCustonListView1.buildScreen(new List<GenericRequest> { new GenericRequest("nombre", null, "name", API.Enums.EndPointsAPI.EquipmentTypes, API.Enums.HttpType.POST), new GenericRequest("Descripcion", null, "description", API.Enums.EndPointsAPI.EquipmentTypes, API.Enums.HttpType.POST), }, null, "Membresias", API.Enums.HttpType.NONE);
             //POSITION 
             this.userControlCustonListView1.Size = new Size((int)(this.screenWidth * 1), (int)(this.screenHeigh * 0.50));
             this.userControlCustonListView1.Location = new Point(0, 50);
@@ -129,8 +132,8 @@ namespace WindowsFormsApp11.Components.MainView
             this.userControlUsers1.Hide();
             string data = await  MainMenuPresenter.getEquipmentTypesAsync();
             //Construct  LISTVIEW 
-            this.userControlCustonListView1.buildScreen(new List<GenericRequest>  { new GenericRequest("nombre",null,"name",API.Enums.EndPointsAPI.EquipmentTypes,API.Enums.HttpType.DELETE), new GenericRequest("Descripcion", null, "description", API.Enums.EndPointsAPI.EquipmentTypes, API.Enums.HttpType.POST), new GenericRequest("id", null, "id", API.Enums.EndPointsAPI.EquipmentTypes, API.Enums.HttpType.POST), }, data, "Tipos de equipamento" , API.Enums.HttpType.GET);
-            this.userControlCustonListView1.PostDataHandler += new EventHandler(PostData);
+            this.userControlCustonListView1.buildScreen(new List<GenericRequest>  { new GenericRequest("nombre",null,"name",API.Enums.EndPointsAPI.EquipmentTypes,API.Enums.HttpType.POST), new GenericRequest("Descripcion", null, "description", API.Enums.EndPointsAPI.EquipmentTypes, API.Enums.HttpType.POST), new GenericRequest("id", null, "id", API.Enums.EndPointsAPI.EquipmentTypes, API.Enums.HttpType.POST), }, data, "Tipos de equipamento" ,API.Enums.EndPointsAPI.EquipmentTypes ,API.Enums.HttpType.GET);
+            this.userControlCustonListView1.PostDataHandler += new EventHandler(PostDataAsync);
             //POSITION 
             this.userControlCustonListView1.Size = new Size((int)(this.screenWidth * 1), (int)(this.screenHeigh * 0.50));
             this.userControlCustonListView1.Location = new Point(0, 50);
@@ -142,10 +145,46 @@ namespace WindowsFormsApp11.Components.MainView
             throw new NotImplementedException();
         }
 
-        public void PostData(object sender, EventArgs e)
+        public async void PostDataAsync(object sender, EventArgs e)
         {
-            Console.WriteLine(sender);
-            throw new NotImplementedException();
+
+            List<GenericRequest> lista = (List<GenericRequest>)sender;
+            HttpType httpType =  lista[0].HttpType;
+            EndPointsAPI endpoint = lista[0].EndPointsAPI;
+
+            switch (endpoint) {
+
+                case EndPointsAPI.EquipmentTypes:
+
+                    if (httpType == HttpType.POST) {
+
+                        string jsonRequest = createRequest(lista,HttpType.POST);
+                        string data = await MainMenuPresenter.makePostGeneric(jsonRequest, EndPointsAPI.EquipmentTypes,HttpType.POST);
+                        string dataTable = await MainMenuPresenter.getEquipmentTypesAsync();
+                        this.userControlCustonListView1.setDataTable(dataTable,EndPointsAPI.EquipmentTypes,HttpType.GET);
+                    }
+
+                    
+                    break;
+            }
+
+
+        }
+
+        private string createRequest(List<GenericRequest> lista, HttpType accion)
+        {
+            Dictionary<string,string> jsonRequest  = new Dictionary<string,string>();
+            string jsonRequestString = "";
+            foreach (GenericRequest item in lista) {
+                jsonRequest.Add(item.Key, item.Value);
+
+            }
+
+            if (accion != HttpType.PUT)
+                jsonRequest.Remove("id");
+
+            return jsonRequestString =   JsonConvert.SerializeObject(jsonRequest);
+
         }
 
         public void UpdateData(object sender, EventArgs e)

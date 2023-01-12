@@ -106,6 +106,7 @@ namespace WindowsFormsApp11.Components.PostPutDelGeneric
             }
 
             PostDataHandler.Invoke(formFields, null);
+            this.Close();
         }
 
         private string getFieldNameValue(string fieldName)

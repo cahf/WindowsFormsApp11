@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WindowsFormsApp11.API.Enums;
 using WindowsFormsApp11.API.genericResponse;
 using WindowsFormsApp11.API.request;
 using WindowsFormsApp11.API.response;
@@ -43,6 +44,17 @@ namespace WindowsFormsApp11.Presenter.MainMenu
         public async Task<string> getEquipmentTypesAsync() {
 
             string data = await MainMenuServiceAsync.getEquipmentTypes();
+
+
+
+            return data;
+
+        }
+
+            //POST GENERIC
+        public async Task<string> makePostGeneric(string jsonRequest, EndPointsAPI endpoint, HttpType accion) {
+
+            string data = await MainMenuServiceAsync.makePost(jsonRequest,endpoint,accion);
 
 
 

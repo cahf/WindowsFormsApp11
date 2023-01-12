@@ -35,34 +35,41 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
         }
    
 
-        public void buildScreen(List<GenericRequest> genericRequest, string data,string HeaderText, HttpType equipmentType) {
+        public void buildScreen(List<GenericRequest> genericRequest, string data,string HeaderText, EndPointsAPI endpoint,HttpType accion) {
 
             this.HeaderText = HeaderText;
             getMeasurements(genericRequest, data);
             arrangeListView(genericRequest, data);
             arrangeButtons();
             arrangeLabel();
-            setDataTable(data, equipmentType);
+            setDataTable(data, endpoint,accion);
             this.formFields = genericRequest;
         }
 
-        private void setDataTable(string data, HttpType equipmentType)
+        public void setDataTable(string data,EndPointsAPI endpoint ,HttpType accion)
         {
             ListViewDataItem dataItem = null;
-            switch (equipmentType) {
+            this.radListView1.Items.Clear();
+            switch (endpoint) {
 
-                case HttpType.GET:
-                    GenericResponse<EquipmentTypesResponse> equipmentResponse = JsonConvert.DeserializeObject<GenericResponse<EquipmentTypesResponse>>(data); ;
-                    for (int i = 0; i < equipmentResponse.ModelGeneric.Length; i++) {
-                        EquipmentTypesResponse model = equipmentResponse.ModelGeneric[i];
-                        dataItem = new ListViewDataItem("ListView"+i,new string[] {
+                case EndPointsAPI.EquipmentTypes:
+                    if (accion == HttpType.GET) {
+                        GenericResponse<EquipmentTypesResponse> equipmentResponse = JsonConvert.DeserializeObject<GenericResponse<EquipmentTypesResponse>>(data); ;
+                        for (int i = 0; i < equipmentResponse.ModelGeneric.Length; i++)
+                        {
+                            EquipmentTypesResponse model = equipmentResponse.ModelGeneric[i];
+                            dataItem = new ListViewDataItem("ListView" + i, new string[] {
                         model.Name,
                         model.Description,
                         model.Id.ToString()
                         });
-                        dataItem.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-                        this.radListView1.Items.Add(dataItem);
+                            dataItem.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+                            this.radListView1.Items.Add(dataItem);
+                        }
                     }
+                    
+                    
+          
                     break;
             
             
