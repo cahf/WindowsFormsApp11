@@ -167,6 +167,8 @@ namespace WindowsFormsApp11.Service
                     case EndPointsAPI.EquipmentTypes:
                         if (accion == HttpType.POST)
                                 response = await client.PostAsync(_urlBase + "/EquipmentTypes",data);
+                        else if (accion == HttpType.DELETE)
+                            response = await client.DeleteAsync(_urlBase + "/EquipmentTypes/" + jsonRquest);
                         break;
                     default:
                         response = new HttpResponseMessage(HttpStatusCode.BadRequest);
@@ -174,6 +176,50 @@ namespace WindowsFormsApp11.Service
                                 
                 }
                 
+                result = await response.Content.ReadAsStringAsync();
+            }
+            catch (HttpRequestException e)
+            {
+
+                Console.WriteLine("\nException Caught!");
+                Console.WriteLine("Message :{0} ", e.Message);
+            }
+
+
+
+
+            return result;
+
+        }
+
+
+        //DELETE GENERIC
+
+        public static async Task<string> makeDelete(String jsonRquest, EndPointsAPI endpoint, HttpType accion)
+        {
+            string result = "vacio";
+            try
+            {
+
+                var data = new StringContent(jsonRquest, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.BadRequest);
+
+                switch (endpoint)
+                {
+
+                    case EndPointsAPI.EquipmentTypes:
+                        if (accion == HttpType.POST)
+                            response = await client.PostAsync(_urlBase + "/EquipmentTypes", data);
+                        else if(accion == HttpType.DELETE)
+                            response = await client.DeleteAsync(_urlBase + "/EquipmentTypes/" + jsonRquest);
+                       
+                        break;
+                    default:
+                        response = new HttpResponseMessage(HttpStatusCode.BadRequest);
+                        break;
+
+                }
+
                 result = await response.Content.ReadAsStringAsync();
             }
             catch (HttpRequestException e)

@@ -157,11 +157,27 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
         
         }
 
+        //BUTTON ADD
         private void radButton1_Click(object sender, EventArgs e)
         {
             PostFormGeneric postForm = new PostFormGeneric(formFields);
             postForm.PostDataHandler += new EventHandler(postDataGeneric);
             postForm.ShowDialog();
+        }
+
+        //BUTTON DELETE
+        private void radButton3_Click(object sender, EventArgs e)
+        {
+            var itemsChecked = this.radListView1.CheckedItems;
+            string id = "";
+            foreach (var itemChecked in itemsChecked) {
+                       id = (string)itemChecked[itemChecked.FieldCount - 1];
+            }
+
+            GenericRequest genericRequest = new GenericRequest("id",id,"id",EndPointsAPI.EquipmentTypes,HttpType.DELETE);
+            PostDataHandler.Invoke(new List<GenericRequest> { genericRequest },null);
+            
+
         }
     }
 }

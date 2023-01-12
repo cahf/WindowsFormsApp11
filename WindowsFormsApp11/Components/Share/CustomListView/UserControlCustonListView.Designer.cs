@@ -67,6 +67,7 @@
             this.radButton3.Size = new System.Drawing.Size(327, 81);
             this.radButton3.TabIndex = 1;
             this.radButton3.Text = "Eliminar";
+            this.radButton3.Click += new System.EventHandler(this.radButton3_Click);
             // 
             // radListView1
             // 
