@@ -179,5 +179,26 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
             
 
         }
+        // BUTTON PUT   
+        private void radButton2_Click(object sender, EventArgs e)
+        {
+            var itemsChecked = this.radListView1.CheckedItems;
+
+            GenericRequest genericRequest;
+            List<GenericRequest> genericRequestList = new List<GenericRequest>();
+            for (int i = 0; i < formFields.Count; i ++) {
+                string columnName = formFields.ElementAt(i).TextLabel;//TextLabel es el nombre del campo en la tabla
+                string key = formFields.ElementAt(i).Key;
+                string value =(string) itemsChecked.First()[columnName];
+                genericRequest = new GenericRequest(columnName,value,key,EndPointsAPI.EquipmentTypes,HttpType.PUT);
+                genericRequestList.Add(genericRequest);
+                
+            }
+            PostFormGeneric postForm = new PostFormGeneric(genericRequestList);
+            postForm.PostDataHandler += new EventHandler(postDataGeneric);
+            postForm.ShowDialog();
+
+
+        }
     }
 }

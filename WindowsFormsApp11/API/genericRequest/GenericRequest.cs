@@ -32,5 +32,6 @@ namespace WindowsFormsApp11.API.genericRequest
         public string Key { get => key; set => key = value; }
         public EndPointsAPI EndPointsAPI { get => endPointsAPI; set => endPointsAPI = value; }
         public HttpType HttpType { get => httpType; set => httpType = value; }
+
     }
 }

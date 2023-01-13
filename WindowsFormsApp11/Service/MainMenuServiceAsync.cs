@@ -153,7 +153,7 @@ namespace WindowsFormsApp11.Service
         // GENERICS 
 
         //POST GENERIC
-        public static async Task<string> makePost(String jsonRquest,EndPointsAPI endpoint, HttpType accion)
+        public static async Task<string> makePost(String jsonRquest,EndPointsAPI endpoint, HttpType accion,string id = null)
         {
             string result = "vacio";
             try
@@ -166,9 +166,11 @@ namespace WindowsFormsApp11.Service
 
                     case EndPointsAPI.EquipmentTypes:
                         if (accion == HttpType.POST)
-                                response = await client.PostAsync(_urlBase + "/EquipmentTypes",data);
+                            response = await client.PostAsync(_urlBase + "/EquipmentTypes", data);
                         else if (accion == HttpType.DELETE)
                             response = await client.DeleteAsync(_urlBase + "/EquipmentTypes/" + jsonRquest);
+                        else if (accion == HttpType.PUT) 
+                            response = await client.PutAsync(_urlBase + "/EquipmentTypes/" + id, data);
                         break;
                     default:
                         response = new HttpResponseMessage(HttpStatusCode.BadRequest);

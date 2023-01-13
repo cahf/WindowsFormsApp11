@@ -56,7 +56,7 @@ namespace WindowsFormsApp11.Components.PostPutDelGeneric
                 radTexbox.Name = formFields.ElementAt(i).TextLabel;
                 radTexbox.Size = new System.Drawing.Size(radTextboxWidth, 36);
                 radTexbox.TabIndex = zindex;
-                radTexbox.Text = "";
+                radTexbox.Text = formFields.ElementAt(i).Value;
                 //radButton.Click += new System.EventHandler(this.radButton1_Click);
 
                 this.Controls.Add(radLabel);

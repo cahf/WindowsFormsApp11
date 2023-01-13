@@ -164,9 +164,24 @@ namespace WindowsFormsApp11.Components.MainView
                         this.userControlCustonListView1.setDataTable(dataTable, EndPointsAPI.EquipmentTypes, HttpType.GET);
                     } else if (httpType == HttpType.DELETE) {
 
-                        string response = await MainMenuPresenter.makePostGeneric(lista[0].Value,EndPointsAPI.EquipmentTypes,HttpType.DELETE);
+                        string response = await MainMenuPresenter.makePostGeneric(lista[0].Value, EndPointsAPI.EquipmentTypes, HttpType.DELETE);
                         string dataTable = await MainMenuPresenter.getEquipmentTypesAsync();
                         this.userControlCustonListView1.setDataTable(dataTable, EndPointsAPI.EquipmentTypes, HttpType.GET);
+                    } else if (httpType == HttpType.PUT) {
+
+                        string id = "";
+                        Dictionary<string, object> dic = new Dictionary<string, object>();
+                        lista.ForEach((element)=>{
+                            if (element.Key == "id")
+                                id = element.Value;
+                            else
+                                dic.Add(element.Key, element.Value);
+                        });
+                        string jsonRequest = JsonConvert.SerializeObject(dic);
+                        string response = await MainMenuPresenter.makePostGeneric(jsonRequest, EndPointsAPI.EquipmentTypes, HttpType.PUT, id);
+                        string dataTable = await MainMenuPresenter.getEquipmentTypesAsync();
+                        this.userControlCustonListView1.setDataTable(dataTable, EndPointsAPI.EquipmentTypes, HttpType.GET);
+
                     }
 
                     

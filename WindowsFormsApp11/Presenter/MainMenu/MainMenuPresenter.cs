@@ -52,8 +52,8 @@ namespace WindowsFormsApp11.Presenter.MainMenu
         }
 
             //POST GENERIC
-        public async Task<string> makePostGeneric(string jsonRequest, EndPointsAPI endpoint, HttpType accion) {
-            string data = await MainMenuServiceAsync.makePost(jsonRequest,endpoint,accion);
+        public async Task<string> makePostGeneric(string jsonRequest, EndPointsAPI endpoint, HttpType accion, string id=null) {
+            string data = await MainMenuServiceAsync.makePost(jsonRequest,endpoint,accion,id);
             return data;
 
         }
