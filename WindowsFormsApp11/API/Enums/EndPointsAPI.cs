@@ -9,6 +9,8 @@ namespace WindowsFormsApp11.API.Enums
     public enum EndPointsAPI
     {
         EquipmentTypes,
+        Members,
+        MembersShips,
         NONE
     }
 }

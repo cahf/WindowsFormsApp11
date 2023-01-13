@@ -153,7 +153,7 @@ namespace WindowsFormsApp11.Service
         // GENERICS 
 
         //POST GENERIC
-        public static async Task<string> makePost(String jsonRquest,EndPointsAPI endpoint, HttpType accion,string id = null)
+        public static async Task<string> makeRequest(String jsonRquest,EndPointsAPI endpoint, HttpType accion,string id = null)
         {
             string result = "vacio";
             try
@@ -171,6 +171,28 @@ namespace WindowsFormsApp11.Service
                             response = await client.DeleteAsync(_urlBase + "/EquipmentTypes/" + jsonRquest);
                         else if (accion == HttpType.PUT) 
                             response = await client.PutAsync(_urlBase + "/EquipmentTypes/" + id, data);
+                        else if (accion == HttpType.GET)
+                            response = await client.GetAsync(_urlBase + "/EquipmentTypes");
+                        break;
+                    case EndPointsAPI.Members:
+                        if (accion == HttpType.POST)
+                            response = await client.PostAsync(_urlBase + "/Members", data);
+                        else if (accion == HttpType.DELETE)
+                            response = await client.DeleteAsync(_urlBase + "/Members/" + jsonRquest);
+                        else if (accion == HttpType.PUT)
+                            response = await client.PutAsync(_urlBase + "/Members/" + id, data);
+                        else if (accion == HttpType.GET)
+                            response = await client.GetAsync(_urlBase + "/Members");
+                        break;
+                    case EndPointsAPI.MembersShips:
+                        if (accion == HttpType.POST)
+                            response = await client.PostAsync(_urlBase + "/MembershipTypes", data);
+                        else if (accion == HttpType.DELETE)
+                            response = await client.DeleteAsync(_urlBase + "/MembershipTypes/" + jsonRquest);
+                        else if (accion == HttpType.PUT)
+                            response = await client.PutAsync(_urlBase + "/MembershipTypes/" + id, data);
+                        else if (accion == HttpType.GET)
+                            response = await client.GetAsync(_urlBase + "/MembershipTypes");
                         break;
                     default:
                         response = new HttpResponseMessage(HttpStatusCode.BadRequest);

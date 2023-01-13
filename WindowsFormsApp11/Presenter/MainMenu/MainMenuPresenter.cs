@@ -52,15 +52,15 @@ namespace WindowsFormsApp11.Presenter.MainMenu
         }
 
             //POST GENERIC
-        public async Task<string> makePostGeneric(string jsonRequest, EndPointsAPI endpoint, HttpType accion, string id=null) {
-            string data = await MainMenuServiceAsync.makePost(jsonRequest,endpoint,accion,id);
+        public async Task<string> makeRequest(string jsonRequest, EndPointsAPI endpoint, HttpType accion, string id=null) {
+            string data = await MainMenuServiceAsync.makeRequest(jsonRequest,endpoint,accion,id);
             return data;
 
         }
 
         public async Task<string> makeDeleteGeneric(string jsonRequest, EndPointsAPI endpoint, HttpType accion)
         {
-            string data = await MainMenuServiceAsync.makePost(jsonRequest, endpoint, accion);
+            string data = await MainMenuServiceAsync.makeRequest(jsonRequest, endpoint, accion);
             return data;
 
         }

@@ -67,12 +67,26 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
                             this.radListView1.Items.Add(dataItem);
                         }
                     }
-                    
-                    
-          
                     break;
-            
-            
+                    case EndPointsAPI.MembersShips:
+                    if (accion == HttpType.GET)
+                    {
+                        GenericResponse<MemberShipsResponse> equipmentResponse = JsonConvert.DeserializeObject<GenericResponse<MemberShipsResponse>>(data); ;
+                        for (int i = 0; i < equipmentResponse.ModelGeneric.Length; i++)
+                        {
+                            MemberShipsResponse model = equipmentResponse.ModelGeneric[i];
+                            dataItem = new ListViewDataItem("ListView" + i, new string[] {
+                        model.Name,
+                        model.Cost,
+                        model.Duration,
+                        model.Id.ToString()
+                        });
+                            dataItem.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+                            this.radListView1.Items.Add(dataItem);
+                        }
+                    }
+                    break;
+
             }
         }
 

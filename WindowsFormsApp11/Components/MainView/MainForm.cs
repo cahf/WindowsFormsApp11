@@ -30,13 +30,14 @@ namespace WindowsFormsApp11.Components.MainView
             InitializeComponent();
             this.userControlListViewMembers1.Hide();
             this.userControlUsers1.Hide();
-            this.userControlHome1.Show();
             this.userControlCustonListView1.Hide();
+            this.userControlHome1.Show();
             mainMenuPresenter = new MainMenuPresenter(this);
             screenWidth = Screen.FromControl(this).Bounds.Width;
             screenHeigh = Screen.FromControl(this).Bounds.Height;
+            this.userControlCustonListView1.PostDataHandler += new EventHandler(PostDataAsync);
 
-  
+
 
             //mainMenuPresenter.getDataAttendances();
         }
@@ -52,88 +53,57 @@ namespace WindowsFormsApp11.Components.MainView
 
         }
         // MIEMBROS MIEMBROS
-        private void radMenuItem4_Click(object sender, EventArgs e)
+        private  async void radMenuItem4_Click(object sender, EventArgs e)
+        {
+
+        }
+        // MIEMBROS RENOVACION DE MEMBRESIAS
+        private async void radMenuItem5_Click(object sender, EventArgs e)
         {
             this.userControlHome1.Hide();
-            this.userControlListViewMembers1.Hide();
-            this.userControlUsers1.Hide();
-            //Construct  LISTVIEW 
-            //this.userControlCustonListView1.buildScreen(new List<GenericRequest> { new GenericRequest("nombre", null, "name", API.Enums.EndPointsAPI.EquipmentTypes, API.Enums.HttpType.POST), new GenericRequest("Descripcion", null, "description", API.Enums.EndPointsAPI.EquipmentTypes, API.Enums.HttpType.POST), }, null, "Miembros", API.Enums.HttpType.NONE);
+            string data = await MainMenuPresenter.makeRequest("", EndPointsAPI.MembersShips, HttpType.GET);
+            this.userControlCustonListView1.buildScreen(new List<GenericRequest> {
+                new GenericRequest("nombre", null, "name", API.Enums.EndPointsAPI.MembersShips, API.Enums.HttpType.GET),
+                new GenericRequest("costo", null, "cost", API.Enums.EndPointsAPI.MembersShips, API.Enums.HttpType.GET),
+                new GenericRequest("Duracion", null, "duration", API.Enums.EndPointsAPI.MembersShips, API.Enums.HttpType.GET),
+                new GenericRequest("id", null, "id", API.Enums.EndPointsAPI.MembersShips, API.Enums.HttpType.GET),
+
+            }, data, "Membresias", API.Enums.EndPointsAPI.MembersShips, API.Enums.HttpType.GET);
+
             //POSITION 
             this.userControlCustonListView1.Size = new Size((int)(this.screenWidth * 1), (int)(this.screenHeigh * 0.50));
             this.userControlCustonListView1.Location = new Point(0, 50);
             this.userControlCustonListView1.Show();
 
         }
-        // MIEMBROS RENOVACION DE MEMBRESIAS
-        private void radMenuItem5_Click(object sender, EventArgs e)
-        {
-
-        }
-
         // MIEMBROS ENTRADAS Y SALIDAS
-        private void radMenuItem6_Click(object sender, EventArgs e)
+        private  async void radMenuItem6_Click(object sender, EventArgs e)
         {
-            MainMenuPresenter.getDataAttendances();
-            this.userControlHome1.Hide();
-            this.userControlUsers1.Hide();
-            this.userControlCustonListView1.Hide();
-            this.userControlListViewMembers1.Show();
-            this.userControlListViewMembers1.Width = (int)(Screen.FromControl(this).Bounds.Width * 0.80);
+
         }
         // ADMINISTRACION USUARIOS
         private void radMenuItem11_Click(object sender, EventArgs e)
         {
-            
-
-            this.userControlHome1.Hide();
-            this.userControlListViewMembers1.Hide();
-            this.userControlCustonListView1.Hide();
-            this.userControlUsers1.Size = new Size((int)(this.screenWidth * 0.50), (int)(this.screenHeigh * 0.50));
-            this.userControlUsers1.Location = new Point(0,50);
-            MainMenuPresenter.getDataUsers();
-            this.userControlUsers1.Show();
 
         }
-
-
          // ADMINISTRACION TIPOS 
         private void radMenuItem10_Click(object sender, EventArgs e)
         {
-            this.userControlHome1.Hide();
-            this.userControlListViewMembers1.Hide();
-            this.userControlUsers1.Hide();
-            //Construct  LISTVIEW 
-            //this.userControlCustonListView1.buildScreen(new List<GenericRequest> { new GenericRequest("nombre", null, "name", API.Enums.EndPointsAPI.EquipmentTypes, API.Enums.HttpType.POST), new GenericRequest("Descripcion", null, "description", API.Enums.EndPointsAPI.EquipmentTypes, API.Enums.HttpType.POST), }, null,"Tipos de equipamento", API.Enums.HttpType.NONE);
-            //POSITION 
-            this.userControlCustonListView1.Size = new Size((int)(this.screenWidth * 1), (int)(this.screenHeigh * 0.50));
-            this.userControlCustonListView1.Location = new Point(0,50);
-            this.userControlCustonListView1.Show();
+  
 
         }
         // ADMINISTRACION MEMEBRESIAS
         private void radMenuItem9_Click(object sender, EventArgs e)
         {
-            this.userControlHome1.Hide();
-            this.userControlListViewMembers1.Hide();
-            this.userControlUsers1.Hide();
-            //Construct  LISTVIEW 
-            //this.userControlCustonListView1.buildScreen(new List<GenericRequest> { new GenericRequest("nombre", null, "name", API.Enums.EndPointsAPI.EquipmentTypes, API.Enums.HttpType.POST), new GenericRequest("Descripcion", null, "description", API.Enums.EndPointsAPI.EquipmentTypes, API.Enums.HttpType.POST), }, null, "Membresias", API.Enums.HttpType.NONE);
-            //POSITION 
-            this.userControlCustonListView1.Size = new Size((int)(this.screenWidth * 1), (int)(this.screenHeigh * 0.50));
-            this.userControlCustonListView1.Location = new Point(0, 50);
-            this.userControlCustonListView1.Show();
+
         }
         // ADMINISTRACION EQUIPO
         private async void radMenuItem8_Click(object sender, EventArgs e)
         {
             this.userControlHome1.Hide();
-            this.userControlListViewMembers1.Hide();
-            this.userControlUsers1.Hide();
-            string data = await  MainMenuPresenter.getEquipmentTypesAsync();
+            string data = await  MainMenuPresenter.makeRequest("",EndPointsAPI.EquipmentTypes,HttpType.GET);
             //Construct  LISTVIEW 
             this.userControlCustonListView1.buildScreen(new List<GenericRequest>  { new GenericRequest("nombre",null,"name",API.Enums.EndPointsAPI.EquipmentTypes,API.Enums.HttpType.POST), new GenericRequest("Descripcion", null, "description", API.Enums.EndPointsAPI.EquipmentTypes, API.Enums.HttpType.POST), new GenericRequest("id", null, "id", API.Enums.EndPointsAPI.EquipmentTypes, API.Enums.HttpType.POST), }, data, "Tipos de equipamento" ,API.Enums.EndPointsAPI.EquipmentTypes ,API.Enums.HttpType.GET);
-            this.userControlCustonListView1.PostDataHandler += new EventHandler(PostDataAsync);
             //POSITION 
             this.userControlCustonListView1.Size = new Size((int)(this.screenWidth * 1), (int)(this.screenHeigh * 0.50));
             this.userControlCustonListView1.Location = new Point(0, 50);
@@ -159,12 +129,12 @@ namespace WindowsFormsApp11.Components.MainView
                     if (httpType == HttpType.POST) {
 
                         string jsonRequest = createRequest(lista, HttpType.POST);
-                        string response = await MainMenuPresenter.makePostGeneric(jsonRequest, EndPointsAPI.EquipmentTypes, HttpType.POST);
+                        string response = await MainMenuPresenter.makeRequest(jsonRequest, EndPointsAPI.EquipmentTypes, HttpType.POST);
                         string dataTable = await MainMenuPresenter.getEquipmentTypesAsync();
                         this.userControlCustonListView1.setDataTable(dataTable, EndPointsAPI.EquipmentTypes, HttpType.GET);
                     } else if (httpType == HttpType.DELETE) {
 
-                        string response = await MainMenuPresenter.makePostGeneric(lista[0].Value, EndPointsAPI.EquipmentTypes, HttpType.DELETE);
+                        string response = await MainMenuPresenter.makeRequest(lista[0].Value, EndPointsAPI.EquipmentTypes, HttpType.DELETE);
                         string dataTable = await MainMenuPresenter.getEquipmentTypesAsync();
                         this.userControlCustonListView1.setDataTable(dataTable, EndPointsAPI.EquipmentTypes, HttpType.GET);
                     } else if (httpType == HttpType.PUT) {
@@ -178,7 +148,7 @@ namespace WindowsFormsApp11.Components.MainView
                                 dic.Add(element.Key, element.Value);
                         });
                         string jsonRequest = JsonConvert.SerializeObject(dic);
-                        string response = await MainMenuPresenter.makePostGeneric(jsonRequest, EndPointsAPI.EquipmentTypes, HttpType.PUT, id);
+                        string response = await MainMenuPresenter.makeRequest(jsonRequest, EndPointsAPI.EquipmentTypes, HttpType.PUT, id);
                         string dataTable = await MainMenuPresenter.getEquipmentTypesAsync();
                         this.userControlCustonListView1.setDataTable(dataTable, EndPointsAPI.EquipmentTypes, HttpType.GET);
 
