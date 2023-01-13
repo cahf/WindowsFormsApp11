@@ -14,7 +14,7 @@ namespace WindowsFormsApp11.View.MainMenu
 
         UserControlUsers UsersUserControl { get; set; }
          void DeleteData(object sender, EventArgs e);
-         void PostDataAsync(object sender, EventArgs e);
+         void requestHandler(object sender, EventArgs e);
          void UpdateData(object sender, EventArgs e);
     }
 }

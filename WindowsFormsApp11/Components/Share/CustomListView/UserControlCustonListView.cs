@@ -23,9 +23,7 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
         float columnTotalWidth;
         float heighCenter;
         string HeaderText;
-        public event EventHandler PostDataHandler;
-        public event EventHandler DeleteDataHandler;
-        public event EventHandler PutDataHandler;
+        public event EventHandler requestHandler;
         List<GenericRequest> formFields;
 
 
@@ -86,6 +84,34 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
                             this.radListView1.Items.Add(dataItem);
                         }
                     }
+                    break;
+
+                case EndPointsAPI.Members:
+                    if (accion == HttpType.GET) {
+                        GenericResponse<MembersResponse> equipmentResponse = JsonConvert.DeserializeObject<GenericResponse<MembersResponse>>(data); ;
+                        for (int i = 0; i < equipmentResponse.ModelGeneric.Length; i++)
+                        {
+                            MembersResponse model = equipmentResponse.ModelGeneric[i];
+                            dataItem = new ListViewDataItem("ListView" + i, new string[] {
+                        model.name,
+                        model.lastName,
+                        model.birthDay,
+                        model.email,
+                        model.allowNewsLetter,
+                        model.registeredOn,
+                        model.membershipEnd,
+                        model.cityId,
+                        model.membershipTypeId,
+                        model.Id.ToString()
+                        });
+                            dataItem.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+                            this.radListView1.Items.Add(dataItem);
+                        }
+                    }
+
+
+
+                    
                     break;
 
             }
@@ -164,10 +190,10 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
         }
 
 
-        private void postDataGeneric(object sender, EventArgs e ) {
+        private void requestHandlerUserControlListViewGeneric(object sender, EventArgs e ) {
 
-           if(this.PostDataHandler != null)
-                this.PostDataHandler(sender, e);
+           if(this.requestHandler != null)
+                this.requestHandler(sender, e);
         
         
         }
@@ -176,7 +202,7 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
         private void radButton1_Click(object sender, EventArgs e)
         {
             PostFormGeneric postForm = new PostFormGeneric(formFields);
-            postForm.PostDataHandler += new EventHandler(postDataGeneric);
+            postForm.PostDataHandler += new EventHandler(requestHandlerUserControlListViewGeneric);
             postForm.ShowDialog();
         }
 
@@ -190,7 +216,7 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
             }
 
             GenericRequest genericRequest = new GenericRequest("id",id,"id",this.formFields.First().EndPointsAPI,HttpType.DELETE);
-            PostDataHandler.Invoke(new List<GenericRequest> { genericRequest },null);
+            requestHandler.Invoke(new List<GenericRequest> { genericRequest },null);
             
 
         }
@@ -210,7 +236,7 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
                 
             }
             PostFormGeneric postForm = new PostFormGeneric(genericRequestList);
-            postForm.PostDataHandler += new EventHandler(postDataGeneric);
+            postForm.PostDataHandler += new EventHandler(requestHandlerUserControlListViewGeneric);
             postForm.ShowDialog();
 
 

@@ -35,7 +35,7 @@ namespace WindowsFormsApp11.Components.MainView
             mainMenuPresenter = new MainMenuPresenter(this);
             screenWidth = Screen.FromControl(this).Bounds.Width;
             screenHeigh = Screen.FromControl(this).Bounds.Height;
-            this.userControlCustonListView1.PostDataHandler += new EventHandler(PostDataAsync);
+            this.userControlCustonListView1.requestHandler += new EventHandler(requestHandler);
 
 
 
@@ -55,7 +55,25 @@ namespace WindowsFormsApp11.Components.MainView
         // MIEMBROS MIEMBROS
         private  async void radMenuItem4_Click(object sender, EventArgs e)
         {
+            this.userControlHome1.Hide();
+            string data = await MainMenuPresenter.makeRequest("", EndPointsAPI.Members, HttpType.GET);
+            this.userControlCustonListView1.buildScreen(new List<GenericRequest> {
+                new GenericRequest("Nombre", null, "name", API.Enums.EndPointsAPI.Members, API.Enums.HttpType.POST),
+                new GenericRequest("Apellido(s)", null, "lastName", API.Enums.EndPointsAPI.Members, API.Enums.HttpType.POST),
+                new GenericRequest("Fecha nacimiento", null, "birthDay", API.Enums.EndPointsAPI.Members, API.Enums.HttpType.POST),
+                new GenericRequest("Correo", null, "email", API.Enums.EndPointsAPI.Members, API.Enums.HttpType.POST),
+                new GenericRequest("Publicidad", null, "allowNewsLetter", API.Enums.EndPointsAPI.Members, API.Enums.HttpType.POST),
+                new GenericRequest("Fecha registro", null, "registeredOn", API.Enums.EndPointsAPI.Members, API.Enums.HttpType.POST),
+                new GenericRequest("Termina membresia", null, "membershipEnd", API.Enums.EndPointsAPI.Members, API.Enums.HttpType.POST),
+                new GenericRequest("ciudadId", null, "cityId", API.Enums.EndPointsAPI.Members, API.Enums.HttpType.POST),
+                new GenericRequest("membershipId", null, "membershipTypeId", API.Enums.EndPointsAPI.Members, API.Enums.HttpType.POST),
 
+            }, data, "Miembros", API.Enums.EndPointsAPI.Members, API.Enums.HttpType.GET);
+
+            //POSITION 
+            this.userControlCustonListView1.Size = new Size((int)(this.screenWidth * 1), (int)(this.screenHeigh * 0.50));
+            this.userControlCustonListView1.Location = new Point(0, 50);
+            this.userControlCustonListView1.Show();
         }
         // MIEMBROS RENOVACION DE MEMBRESIAS
         private async void radMenuItem5_Click(object sender, EventArgs e)
@@ -116,7 +134,7 @@ namespace WindowsFormsApp11.Components.MainView
             throw new NotImplementedException();
         }
 
-        public async void PostDataAsync(object sender, EventArgs e)
+        public async void requestHandler(object sender, EventArgs e)
         {
 
             List<GenericRequest> lista = (List<GenericRequest>)sender;
