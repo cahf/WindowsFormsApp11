@@ -79,6 +79,7 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
                         model.Name,
                         model.Cost,
                         model.Duration,
+                        model.CreatedOn,
                         model.Id.ToString()
                         });
                             dataItem.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -188,7 +189,7 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
                        id = (string)itemChecked[itemChecked.FieldCount - 1];
             }
 
-            GenericRequest genericRequest = new GenericRequest("id",id,"id",EndPointsAPI.EquipmentTypes,HttpType.DELETE);
+            GenericRequest genericRequest = new GenericRequest("id",id,"id",this.formFields.First().EndPointsAPI,HttpType.DELETE);
             PostDataHandler.Invoke(new List<GenericRequest> { genericRequest },null);
             
 
@@ -204,7 +205,7 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
                 string columnName = formFields.ElementAt(i).TextLabel;//TextLabel es el nombre del campo en la tabla
                 string key = formFields.ElementAt(i).Key;
                 string value =(string) itemsChecked.First()[columnName];
-                genericRequest = new GenericRequest(columnName,value,key,EndPointsAPI.EquipmentTypes,HttpType.PUT);
+                genericRequest = new GenericRequest(columnName,value,key,this.formFields.First().EndPointsAPI,HttpType.PUT);
                 genericRequestList.Add(genericRequest);
                 
             }

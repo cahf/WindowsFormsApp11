@@ -186,6 +186,7 @@
     <Compile Include="Service\LoginService.cs" />
     <Compile Include="Service\MainMenuService.cs" />
     <Compile Include="Service\MainMenuServiceAsync.cs" />
+    <Compile Include="Utils\Utils.cs" />
     <Compile Include="View\Login\ILoginView.cs" />
     <Compile Include="View\MainMenu\IMainMenuView.cs" />
     <EmbeddedResource Include="Components\Home\UserControlHomeCarousel.resx">

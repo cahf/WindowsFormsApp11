@@ -63,10 +63,11 @@ namespace WindowsFormsApp11.Components.MainView
             this.userControlHome1.Hide();
             string data = await MainMenuPresenter.makeRequest("", EndPointsAPI.MembersShips, HttpType.GET);
             this.userControlCustonListView1.buildScreen(new List<GenericRequest> {
-                new GenericRequest("nombre", null, "name", API.Enums.EndPointsAPI.MembersShips, API.Enums.HttpType.GET),
-                new GenericRequest("costo", null, "cost", API.Enums.EndPointsAPI.MembersShips, API.Enums.HttpType.GET),
-                new GenericRequest("Duracion", null, "duration", API.Enums.EndPointsAPI.MembersShips, API.Enums.HttpType.GET),
-                new GenericRequest("id", null, "id", API.Enums.EndPointsAPI.MembersShips, API.Enums.HttpType.GET),
+                new GenericRequest("Nombre", null, "name", API.Enums.EndPointsAPI.MembersShips, API.Enums.HttpType.POST),
+                new GenericRequest("Costo", null, "cost", API.Enums.EndPointsAPI.MembersShips, API.Enums.HttpType.POST),
+                new GenericRequest("Duracion", null, "duration", API.Enums.EndPointsAPI.MembersShips, API.Enums.HttpType.POST),
+                new GenericRequest("Fecha cracion", null, "createdOn", API.Enums.EndPointsAPI.MembersShips, API.Enums.HttpType.POST),
+                new GenericRequest("id", null, "id", API.Enums.EndPointsAPI.MembersShips, API.Enums.HttpType.POST),
 
             }, data, "Membresias", API.Enums.EndPointsAPI.MembersShips, API.Enums.HttpType.GET);
 
@@ -155,6 +156,38 @@ namespace WindowsFormsApp11.Components.MainView
                     }
 
                     
+                    break;
+                case EndPointsAPI.MembersShips:
+
+                    if (httpType == HttpType.POST) {
+                        string jsonRequest = createRequest(lista, HttpType.POST);
+                        string response = await MainMenuPresenter.makeRequest(jsonRequest, EndPointsAPI.MembersShips, HttpType.POST);
+                        string dataTable = await MainMenuPresenter.makeRequest("", EndPointsAPI.MembersShips, HttpType.GET);
+                        this.userControlCustonListView1.setDataTable(dataTable, EndPointsAPI.MembersShips, HttpType.GET);
+                    }
+                    else if (httpType == HttpType.DELETE) {
+                        string response = await MainMenuPresenter.makeRequest(lista[0].Value, EndPointsAPI.MembersShips, HttpType.DELETE);
+                        string dataTable = await MainMenuPresenter.makeRequest("", EndPointsAPI.MembersShips, HttpType.GET);
+                        this.userControlCustonListView1.setDataTable(dataTable, EndPointsAPI.MembersShips, HttpType.GET);
+                    }
+                    else if (httpType == HttpType.PUT) {
+                        string id = "";
+                        Dictionary<string, object> dic = new Dictionary<string, object>();
+                        lista.ForEach((element) => {
+                            if (element.Key == "id")
+                                id = element.Value;
+                            else
+                                dic.Add(element.Key, element.Value);
+                        });
+                        string jsonRequest = JsonConvert.SerializeObject(dic);
+                        string response = await MainMenuPresenter.makeRequest(jsonRequest, EndPointsAPI.MembersShips, HttpType.PUT, id);
+                        string dataTable = await MainMenuPresenter.makeRequest("", EndPointsAPI.MembersShips, HttpType.GET);
+                        this.userControlCustonListView1.setDataTable(dataTable, EndPointsAPI.MembersShips, HttpType.GET);
+
+                    }
+
+
+
                     break;
             }
 
