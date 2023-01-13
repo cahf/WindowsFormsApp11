@@ -13,7 +13,7 @@ namespace WindowsFormsApp11.Components.PostPutDelGeneric
 {
     public partial class PostFormGeneric : Form
     {
-        public event EventHandler PostDataHandler;
+        public event EventHandler requestHandler;
         List<GenericRequest> formFields;
         public PostFormGeneric(List<GenericRequest> formFields)
         {
@@ -105,7 +105,7 @@ namespace WindowsFormsApp11.Components.PostPutDelGeneric
 
             }
 
-            PostDataHandler.Invoke(formFields, null);
+            requestHandler.Invoke(formFields, null);
             this.Close();
         }
 

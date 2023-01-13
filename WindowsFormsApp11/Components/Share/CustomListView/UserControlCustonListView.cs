@@ -202,7 +202,7 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
         private void radButton1_Click(object sender, EventArgs e)
         {
             PostFormGeneric postForm = new PostFormGeneric(formFields);
-            postForm.PostDataHandler += new EventHandler(requestHandlerUserControlListViewGeneric);
+            postForm.requestHandler += new EventHandler(requestHandlerUserControlListViewGeneric);
             postForm.ShowDialog();
         }
 
@@ -236,7 +236,7 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
                 
             }
             PostFormGeneric postForm = new PostFormGeneric(genericRequestList);
-            postForm.PostDataHandler += new EventHandler(requestHandlerUserControlListViewGeneric);
+            postForm.requestHandler += new EventHandler(requestHandlerUserControlListViewGeneric);
             postForm.ShowDialog();
 
 

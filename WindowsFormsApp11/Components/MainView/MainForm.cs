@@ -179,9 +179,9 @@ namespace WindowsFormsApp11.Components.MainView
 
                     if (httpType == HttpType.POST) {
                         string jsonRequest = createRequest(lista, HttpType.POST);
-                        string response = await MainMenuPresenter.makeRequest(jsonRequest, EndPointsAPI.MembersShips, HttpType.POST);
-                        string dataTable = await MainMenuPresenter.makeRequest("", EndPointsAPI.MembersShips, HttpType.GET);
-                        this.userControlCustonListView1.setDataTable(dataTable, EndPointsAPI.MembersShips, HttpType.GET);
+                        string response = await MainMenuPresenter.makeRequest(jsonRequest, EndPointsAPI.Members, HttpType.POST);
+                        string dataTable = await MainMenuPresenter.makeRequest("", EndPointsAPI.Members, HttpType.GET);
+                        this.userControlCustonListView1.setDataTable(dataTable, EndPointsAPI.Members, HttpType.GET);
                     }
                     else if (httpType == HttpType.DELETE) {
                         string response = await MainMenuPresenter.makeRequest(lista[0].Value, EndPointsAPI.MembersShips, HttpType.DELETE);
@@ -203,8 +203,15 @@ namespace WindowsFormsApp11.Components.MainView
                         this.userControlCustonListView1.setDataTable(dataTable, EndPointsAPI.MembersShips, HttpType.GET);
 
                     }
-
-
+                    break;
+                case EndPointsAPI.Members:
+                    if (httpType == HttpType.POST)
+                    {
+                        string jsonRequest = createRequest(lista, HttpType.POST);
+                        string response = await MainMenuPresenter.makeRequest(jsonRequest, EndPointsAPI.Members, HttpType.POST);
+                        string dataTable = await MainMenuPresenter.makeRequest("", EndPointsAPI.Members, HttpType.GET);
+                        this.userControlCustonListView1.setDataTable(dataTable, EndPointsAPI.Members, HttpType.GET);
+                    }
 
                     break;
             }
