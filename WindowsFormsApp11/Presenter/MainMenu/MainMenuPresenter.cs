@@ -9,6 +9,7 @@ using WindowsFormsApp11.API.request;
 using WindowsFormsApp11.API.response;
 using WindowsFormsApp11.Service;
 using WindowsFormsApp11.View.MainMenu;
+using UsersResponse = WindowsFormsApp11.API.response.UsersResponse;
 
 namespace WindowsFormsApp11.Presenter.MainMenu
 {

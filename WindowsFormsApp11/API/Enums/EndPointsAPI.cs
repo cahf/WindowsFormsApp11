@@ -12,6 +12,7 @@ namespace WindowsFormsApp11.API.Enums
         Members,
         MembersShips,
         Attendance,
+        Users,
         NONE
     }
 }

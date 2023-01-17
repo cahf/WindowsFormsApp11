@@ -129,6 +129,25 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
                     }
                     break;
 
+                case EndPointsAPI.Users:
+                    if (accion == HttpType.GET)
+                    {
+                        GenericResponse<UsersResponse> equipmentResponse = JsonConvert.DeserializeObject<GenericResponse<UsersResponse>>(data); ;
+                        for (int i = 0; i < equipmentResponse.ModelGeneric.Length; i++)
+                        {
+                            UsersResponse model = equipmentResponse.ModelGeneric[i];
+                            dataItem = new ListViewDataItem("ListView" + i, new string[] {
+                        model.UserName,
+                        model.PhoneNumber,
+                        model.Email,
+                        model.Id.ToString()
+                        });
+                            dataItem.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+                            this.radListView1.Items.Add(dataItem);
+                        }
+                    }
+                    break;
+
             }
         }
 

@@ -68,6 +68,7 @@
     <Compile Include="API\Enums\EndPointsAPI.cs" />
     <Compile Include="API\Enums\HttpType.cs" />
     <Compile Include="API\genericRequest\GenericRequest.cs" />
+    <Compile Include="API\genericResponse\UsersResponse .cs" />
     <Compile Include="API\genericResponse\AttendanceResponse .cs" />
     <Compile Include="API\genericResponse\MembersResponse.cs" />
     <Compile Include="API\genericResponse\MemberShipsResponse.cs" />

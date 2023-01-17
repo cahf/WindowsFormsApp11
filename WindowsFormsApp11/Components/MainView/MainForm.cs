@@ -109,17 +109,30 @@ namespace WindowsFormsApp11.Components.MainView
                 new GenericRequest("Fecha finalizacion membresia", null, "membershipEnd", API.Enums.EndPointsAPI.Attendance, API.Enums.HttpType.POST),
                 new GenericRequest("id", null, "id", API.Enums.EndPointsAPI.Attendance, API.Enums.HttpType.POST),
 
-            }, data, "Membresias", API.Enums.EndPointsAPI.Attendance, API.Enums.HttpType.GET);
+            }, data, "Asistencias", API.Enums.EndPointsAPI.Attendance, API.Enums.HttpType.GET);
 
             //POSITION 
             this.userControlCustonListView1.Size = new Size((int)(this.screenWidth * 1), (int)(this.screenHeigh * 0.50));
             this.userControlCustonListView1.Location = new Point(0, 50);
             this.userControlCustonListView1.Show();
         }
-        // ADMINISTRACION USUARIOS
-        private void radMenuItem11_Click(object sender, EventArgs e)
+        // ADMINISTRACION --> USUARIOS
+        private async void radMenuItem11_ClickAsync(object sender, EventArgs e)
         {
+            this.userControlHome1.Hide();
+            string data = await MainMenuPresenter.makeRequest("", EndPointsAPI.Users, HttpType.GET);
+            this.userControlCustonListView1.buildScreen(new List<GenericRequest> {
+                new GenericRequest("Usuario", null, "userName", API.Enums.EndPointsAPI.Users, API.Enums.HttpType.POST),
+                new GenericRequest("Telefono", null, "phoneNumber", API.Enums.EndPointsAPI.Users, API.Enums.HttpType.POST),
+                new GenericRequest("Correo", null, "email", API.Enums.EndPointsAPI.Users, API.Enums.HttpType.POST),
+                new GenericRequest("id", null, "id", API.Enums.EndPointsAPI.Users, API.Enums.HttpType.POST),
 
+            }, data, "Users", API.Enums.EndPointsAPI.Users, API.Enums.HttpType.GET);
+
+            //POSITION 
+            this.userControlCustonListView1.Size = new Size((int)(this.screenWidth * 1), (int)(this.screenHeigh * 0.50));
+            this.userControlCustonListView1.Location = new Point(0, 50);
+            this.userControlCustonListView1.Show();
         }
          // ADMINISTRACION TIPOS 
         private void radMenuItem10_Click(object sender, EventArgs e)
@@ -271,6 +284,27 @@ namespace WindowsFormsApp11.Components.MainView
                         string response = await MainMenuPresenter.makeRequest(lista[0].Value, EndPointsAPI.Attendance, HttpType.POST);
                         string dataTable = await MainMenuPresenter.makeRequest("", EndPointsAPI.Attendance, HttpType.GET);
                         this.userControlCustonListView1.setDataTable(dataTable, EndPointsAPI.Attendance, HttpType.GET);
+                    }
+
+                    break;
+
+                case EndPointsAPI.Users:
+                    if (httpType == HttpType.POST)
+                    {
+
+                        string jsonRequest = createRequest(lista, HttpType.POST);
+                        string response = await MainMenuPresenter.makeRequest(jsonRequest, EndPointsAPI.Users, HttpType.POST);
+                        string dataTable = await MainMenuPresenter.makeRequest("", EndPointsAPI.Users, HttpType.GET);
+                        this.userControlCustonListView1.setDataTable(dataTable, EndPointsAPI.Users, HttpType.GET);
+                    }
+                    if (httpType == HttpType.DELETE)
+                    {
+
+                        string response = await MainMenuPresenter.makeRequest(lista[0].Value, EndPointsAPI.Users, HttpType.DELETE);
+                        string dataTable = await MainMenuPresenter.makeRequest("", EndPointsAPI.Users, HttpType.GET);
+                        this.userControlCustonListView1.setDataTable(dataTable, EndPointsAPI.Users, HttpType.GET);
+
+
                     }
 
                     break;

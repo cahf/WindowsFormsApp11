@@ -196,9 +196,6 @@ namespace WindowsFormsApp11.Service
                             response = await client.GetAsync(_urlBase + "/MembershipTypes");
                         break;
                     case EndPointsAPI.Attendance:
-
-                        
-
                         if (accion == HttpType.POST)
                             response = await client.PostAsync(_urlBase + "/Attendance/" + jsonRquest, new StringContent("", Encoding.UTF8, "application/json"));
                         else if (accion == HttpType.DELETE)
@@ -208,9 +205,20 @@ namespace WindowsFormsApp11.Service
                         else if (accion == HttpType.GET)
                             response = await client.GetAsync(_urlBase + "/Attendance");
                         break;
+                    case EndPointsAPI.Users:
+                        if (accion == HttpType.POST)
+                            response = await client.PostAsync(_urlBase + "/Users", data);
+                        else if (accion == HttpType.DELETE)
+                            response = await client.DeleteAsync(_urlBase + "/Users/" + jsonRquest);
+                        else if (accion == HttpType.PUT)
+                            response = await client.PutAsync(_urlBase + "/Users/" + id, data);
+                        else if (accion == HttpType.GET)
+                            response = await client.GetAsync(_urlBase + "/Users");
+                        break;
                     default:
                         response = new HttpResponseMessage(HttpStatusCode.BadRequest);
                     break;
+
                                 
                 }
                 

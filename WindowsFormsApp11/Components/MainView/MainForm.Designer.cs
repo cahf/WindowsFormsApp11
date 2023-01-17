@@ -135,7 +135,7 @@ namespace WindowsFormsApp11.Components.MainView
             // 
             this.radMenuItem11.Name = "radMenuItem11";
             this.radMenuItem11.Text = "Usuarios";
-            this.radMenuItem11.Click += new System.EventHandler(this.radMenuItem11_Click);
+            this.radMenuItem11.Click += new System.EventHandler(this.radMenuItem11_ClickAsync);
             // 
             // userControlHome1
             // 
