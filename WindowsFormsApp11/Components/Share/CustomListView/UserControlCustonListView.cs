@@ -100,8 +100,8 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
                         model.allowNewsLetter,
                         model.registeredOn,
                         model.membershipEnd,
-                        model.cityId,
-                        model.membershipTypeId,
+                        "1", //Todo siempre va Queretaro por que el API siempre regrese 0 
+                        "3",//Todo siempre va la membresia con id igual a 3 por el API solo regresa 0
                         model.Id.ToString()
                         });
                             dataItem.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -235,6 +235,11 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
                 genericRequestList.Add(genericRequest);
                 
             }
+
+            
+             string jsonRequest = JsonConvert.SerializeObject(genericRequestList);
+
+
             PostFormGeneric postForm = new PostFormGeneric(genericRequestList);
             postForm.requestHandler += new EventHandler(requestHandlerUserControlListViewGeneric);
             postForm.ShowDialog();

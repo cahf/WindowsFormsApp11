@@ -67,6 +67,8 @@ namespace WindowsFormsApp11.Components.MainView
                 new GenericRequest("Termina membresia", null, "membershipEnd", API.Enums.EndPointsAPI.Members, API.Enums.HttpType.POST),
                 new GenericRequest("ciudadId", null, "cityId", API.Enums.EndPointsAPI.Members, API.Enums.HttpType.POST),
                 new GenericRequest("membershipId", null, "membershipTypeId", API.Enums.EndPointsAPI.Members, API.Enums.HttpType.POST),
+                new GenericRequest("id", null, "id", API.Enums.EndPointsAPI.Members, API.Enums.HttpType.POST),
+
 
             }, data, "Miembros", API.Enums.EndPointsAPI.Members, API.Enums.HttpType.GET);
 
@@ -212,7 +214,32 @@ namespace WindowsFormsApp11.Components.MainView
                         string dataTable = await MainMenuPresenter.makeRequest("", EndPointsAPI.Members, HttpType.GET);
                         this.userControlCustonListView1.setDataTable(dataTable, EndPointsAPI.Members, HttpType.GET);
                     }
+                    if (httpType == HttpType.DELETE) {
 
+                        string response = await MainMenuPresenter.makeRequest(lista[0].Value, EndPointsAPI.Members, HttpType.DELETE);
+                        string dataTable = await MainMenuPresenter.makeRequest("", EndPointsAPI.Members, HttpType.GET);
+                        this.userControlCustonListView1.setDataTable(dataTable, EndPointsAPI.Members, HttpType.GET);
+
+
+                    }
+                    else if (httpType == HttpType.PUT)
+                    {
+                        string id = "";
+                        Dictionary<string, object> dic = new Dictionary<string, object>();
+                        lista.ForEach((element) => {
+                            if (element.Key == "id")
+                                id = element.Value;
+                            
+                            else
+                                dic.Add(element.Key, element.Value);
+                        });
+                        string jsonRequest = JsonConvert.SerializeObject(dic);
+                        string response = await MainMenuPresenter.makeRequest(jsonRequest, EndPointsAPI.Members, HttpType.PUT, id);
+                        string dataTable = await MainMenuPresenter.makeRequest("", EndPointsAPI.Members, HttpType.GET);
+                        this.userControlCustonListView1.setDataTable(dataTable, EndPointsAPI.Members, HttpType.GET);
+
+                    }
+                    
                     break;
             }
 
