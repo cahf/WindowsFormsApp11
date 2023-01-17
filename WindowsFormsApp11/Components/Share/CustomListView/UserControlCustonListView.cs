@@ -135,6 +135,7 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
         private void arrangeListView(List<GenericRequest> headersColumns, Object data) {
 
             this.radListView1.ViewType = ListViewType.DetailsView;
+            this.radListView1.Columns.Clear();
             this.radListView1.ShowCheckBoxes = true;
             ListViewDetailColumn listViewDetailColumn;
             for (int i = 0; i < headersColumns.Count; i++) {
