@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using WindowsFormsApp11.API.Enums;
+using WindowsFormsApp11.API.genericRequest;
 using WindowsFormsApp11.API.genericResponse;
 using WindowsFormsApp11.API.request;
 using WindowsFormsApp11.API.response;
@@ -193,6 +194,19 @@ namespace WindowsFormsApp11.Service
                             response = await client.PutAsync(_urlBase + "/MembershipTypes/" + id, data);
                         else if (accion == HttpType.GET)
                             response = await client.GetAsync(_urlBase + "/MembershipTypes");
+                        break;
+                    case EndPointsAPI.Attendance:
+
+                        
+
+                        if (accion == HttpType.POST)
+                            response = await client.PostAsync(_urlBase + "/Attendance/" + jsonRquest, new StringContent("", Encoding.UTF8, "application/json"));
+                        else if (accion == HttpType.DELETE)
+                            response = await client.DeleteAsync(_urlBase + "/Attendance/" + jsonRquest);
+                        else if (accion == HttpType.PUT)
+                            response = await client.PutAsync(_urlBase + "/Attendance/" + id, data);
+                        else if (accion == HttpType.GET)
+                            response = await client.GetAsync(_urlBase + "/Attendance");
                         break;
                     default:
                         response = new HttpResponseMessage(HttpStatusCode.BadRequest);

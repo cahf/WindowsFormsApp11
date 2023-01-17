@@ -11,6 +11,7 @@ namespace WindowsFormsApp11.API.Enums
         EquipmentTypes,
         Members,
         MembersShips,
+        Attendance,
         NONE
     }
 }

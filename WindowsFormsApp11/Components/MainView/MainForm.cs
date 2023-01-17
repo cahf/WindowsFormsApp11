@@ -97,10 +97,24 @@ namespace WindowsFormsApp11.Components.MainView
             this.userControlCustonListView1.Show();
 
         }
-        // MIEMBROS ENTRADAS Y SALIDAS
+        // MIEMBROS --> ENTRADAS Y SALIDA
         private  async void radMenuItem6_Click(object sender, EventArgs e)
         {
+            this.userControlHome1.Hide();
+            string data = await MainMenuPresenter.makeRequest("", EndPointsAPI.Attendance, HttpType.GET);
+            this.userControlCustonListView1.buildScreen(new List<GenericRequest> {
+                new GenericRequest("Nombre", null, "name", API.Enums.EndPointsAPI.Attendance, API.Enums.HttpType.POST),
+                new GenericRequest("Apellido(s)", null, "lastName", API.Enums.EndPointsAPI.Attendance, API.Enums.HttpType.POST),
+                new GenericRequest("Fecha nacimiento", null, "birthDay", API.Enums.EndPointsAPI.Attendance, API.Enums.HttpType.POST),
+                new GenericRequest("Fecha finalizacion membresia", null, "membershipEnd", API.Enums.EndPointsAPI.Attendance, API.Enums.HttpType.POST),
+                new GenericRequest("id", null, "id", API.Enums.EndPointsAPI.Attendance, API.Enums.HttpType.POST),
 
+            }, data, "Membresias", API.Enums.EndPointsAPI.Attendance, API.Enums.HttpType.GET);
+
+            //POSITION 
+            this.userControlCustonListView1.Size = new Size((int)(this.screenWidth * 1), (int)(this.screenHeigh * 0.50));
+            this.userControlCustonListView1.Location = new Point(0, 50);
+            this.userControlCustonListView1.Show();
         }
         // ADMINISTRACION USUARIOS
         private void radMenuItem11_Click(object sender, EventArgs e)
@@ -240,6 +254,25 @@ namespace WindowsFormsApp11.Components.MainView
 
                     }
                     
+                    break;
+                case EndPointsAPI.Attendance:
+                    if (httpType == HttpType.DELETE)
+                    {
+
+                        string response = await MainMenuPresenter.makeRequest(lista[0].Value, EndPointsAPI.Attendance, HttpType.DELETE);
+                        string dataTable = await MainMenuPresenter.makeRequest("", EndPointsAPI.Attendance, HttpType.GET);
+                        this.userControlCustonListView1.setDataTable(dataTable, EndPointsAPI.Attendance, HttpType.GET);
+
+
+                    }
+                    if (httpType == HttpType.POST)
+                    {
+                        
+                        string response = await MainMenuPresenter.makeRequest(lista[0].Value, EndPointsAPI.Attendance, HttpType.POST);
+                        string dataTable = await MainMenuPresenter.makeRequest("", EndPointsAPI.Attendance, HttpType.GET);
+                        this.userControlCustonListView1.setDataTable(dataTable, EndPointsAPI.Attendance, HttpType.GET);
+                    }
+
                     break;
             }
 

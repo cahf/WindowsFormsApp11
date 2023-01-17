@@ -88,7 +88,7 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
 
                 case EndPointsAPI.Members:
                     if (accion == HttpType.GET) {
-                        GenericResponse<MembersResponse> equipmentResponse = JsonConvert.DeserializeObject<GenericResponse<MembersResponse>>(data); ;
+                        GenericResponse<MembersResponse> equipmentResponse = JsonConvert.DeserializeObject<GenericResponse<MembersResponse>>(data);
                         for (int i = 0; i < equipmentResponse.ModelGeneric.Length; i++)
                         {
                             MembersResponse model = equipmentResponse.ModelGeneric[i];
@@ -108,10 +108,25 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
                             this.radListView1.Items.Add(dataItem);
                         }
                     }
-
-
-
-                    
+                    break;
+                case EndPointsAPI.Attendance:
+                    if (accion == HttpType.GET)
+                    {
+                        GenericResponse<AttendanceResponse> equipmentResponse = JsonConvert.DeserializeObject<GenericResponse<AttendanceResponse>>(data); ;
+                        for (int i = 0; i < equipmentResponse.ModelGeneric.Length; i++)
+                        {
+                            Member model = equipmentResponse.ModelGeneric[i].Member;
+                            dataItem = new ListViewDataItem("ListView" + i, new string[] {
+                        model.Name,
+                        model.LastName,
+                        model.BirthDay.ToString(),
+                        model.MembershipEnd.ToString(),
+                        model.Id.ToString()
+                        });
+                            dataItem.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+                            this.radListView1.Items.Add(dataItem);
+                        }
+                    }
                     break;
 
             }
@@ -204,7 +219,23 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
         {
             PostFormGeneric postForm = new PostFormGeneric(formFields);
             postForm.requestHandler += new EventHandler(requestHandlerUserControlListViewGeneric);
-            postForm.ShowDialog();
+
+            if (this.formFields.First().EndPointsAPI != EndPointsAPI.Attendance)
+            {
+              
+                postForm.ShowDialog();
+            }
+            else {
+                var itemsChecked = this.radListView1.CheckedItems;
+                var firstItem = itemsChecked.First();
+                string id = (string)firstItem[firstItem.FieldCount - 1];
+
+
+                GenericRequest genericRequest = new GenericRequest("id", id, "id", this.formFields.First().EndPointsAPI, HttpType.POST);
+                requestHandler.Invoke(new List<GenericRequest> { genericRequest }, null);
+
+
+            }
         }
 
         //BUTTON DELETE
