@@ -36,6 +36,8 @@ namespace WindowsFormsApp11.Components.PostPutDelGeneric
             int zindex = -1;
             verticalSpace += (int)(formHeight * 0.15);
             for (int i = 0; i < formFields.Count; i++) {
+                if (!formFields.ElementAt(i).ControlSeccion.Contains(API.Enums.ControlSeccion.FORM))
+                    continue;
                 radLabel = new Telerik.WinControls.UI.RadLabel();
                 radTexbox = new Telerik.WinControls.UI.RadTextBox();
                 ((System.ComponentModel.ISupportInitialize)(radLabel)).BeginInit();

@@ -14,17 +14,19 @@ namespace WindowsFormsApp11.API.genericRequest
         private string key;
         private EndPointsAPI endPointsAPI;
         private HttpType httpType;
+        private List<ControlSeccion> controlSeccion =   new List<ControlSeccion> { Enums.ControlSeccion.TABLE };
 
         public GenericRequest() {
         }
 
-        public GenericRequest(string textLabel, string value, string key,EndPointsAPI endPointsAPI ,HttpType httpType)
-        {   
+        public GenericRequest(string textLabel, string value, string key,EndPointsAPI endPointsAPI, HttpType httpType, List<ControlSeccion> controlSeccion = null)
+        {
             this.textLabel = textLabel;
             this.value = value;
             this.key = key;
             this.endPointsAPI = endPointsAPI;
-            this.httpType = httpType;  
+            this.httpType = httpType;
+            ControlSeccion = controlSeccion != null ? controlSeccion : this.controlSeccion;    
         }
 
         public string TextLabel { get => textLabel; set => textLabel = value; }
@@ -32,6 +34,6 @@ namespace WindowsFormsApp11.API.genericRequest
         public string Key { get => key; set => key = value; }
         public EndPointsAPI EndPointsAPI { get => endPointsAPI; set => endPointsAPI = value; }
         public HttpType HttpType { get => httpType; set => httpType = value; }
-
+        public List<ControlSeccion> ControlSeccion { get => controlSeccion; set => controlSeccion = value; }
     }
 }

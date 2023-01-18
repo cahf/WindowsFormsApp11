@@ -65,6 +65,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API\Enums\ControlSeccion.cs" />
     <Compile Include="API\Enums\EndPointsAPI.cs" />
     <Compile Include="API\Enums\HttpType.cs" />
     <Compile Include="API\genericRequest\GenericRequest.cs" />

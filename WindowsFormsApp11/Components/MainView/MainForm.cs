@@ -122,10 +122,11 @@ namespace WindowsFormsApp11.Components.MainView
             this.userControlHome1.Hide();
             string data = await MainMenuPresenter.makeRequest("", EndPointsAPI.Users, HttpType.GET);
             this.userControlCustonListView1.buildScreen(new List<GenericRequest> {
-                new GenericRequest("Usuario", null, "userName", API.Enums.EndPointsAPI.Users, API.Enums.HttpType.POST),
-                new GenericRequest("Telefono", null, "phoneNumber", API.Enums.EndPointsAPI.Users, API.Enums.HttpType.POST),
-                new GenericRequest("Correo", null, "email", API.Enums.EndPointsAPI.Users, API.Enums.HttpType.POST),
-                new GenericRequest("id", null, "id", API.Enums.EndPointsAPI.Users, API.Enums.HttpType.POST),
+                new GenericRequest("Usuario", null, "userName", API.Enums.EndPointsAPI.Users, API.Enums.HttpType.POST,new List<ControlSeccion>{ControlSeccion.TABLE}),
+                new GenericRequest("Telefono", null, "phoneNumber", API.Enums.EndPointsAPI.Users, API.Enums.HttpType.POST,new List<ControlSeccion>{ControlSeccion.TABLE,ControlSeccion.FORM,}),
+                new GenericRequest("Correo", null, "email", API.Enums.EndPointsAPI.Users, API.Enums.HttpType.POST,new List<ControlSeccion>{ControlSeccion.TABLE,ControlSeccion.FORM}),
+                new GenericRequest("Password", null, "password", API.Enums.EndPointsAPI.Users, API.Enums.HttpType.POST,new List<ControlSeccion>{ControlSeccion.FORM}),
+                new GenericRequest("id", null, "id", API.Enums.EndPointsAPI.Users, API.Enums.HttpType.POST, new List < ControlSeccion > { ControlSeccion.TABLE }),
 
             }, data, "Users", API.Enums.EndPointsAPI.Users, API.Enums.HttpType.GET);
 

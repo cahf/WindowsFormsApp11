@@ -174,7 +174,12 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
             ListViewDetailColumn listViewDetailColumn;
             for (int i = 0; i < headersColumns.Count; i++) {
 
+                
+
                 GenericRequest columnName = headersColumns.ElementAt(i);
+                if (!columnName.ControlSeccion.Contains(ControlSeccion.TABLE))
+                    continue;
+
                 listViewDetailColumn = new ListViewDetailColumn(columnName.TextLabel, columnName.TextLabel);
                 listViewDetailColumn.HeaderText = columnName.TextLabel.ToUpper();
                 listViewDetailColumn.MaxWidth = this.columnWidth;
