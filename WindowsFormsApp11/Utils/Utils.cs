@@ -9,5 +9,12 @@ namespace WindowsFormsApp11.Utils
     public static class Utils
     {
 
+
+        public static void printValues(string value) { 
+                
+            Console.WriteLine(value);
+            
+        }
+
     }
 }

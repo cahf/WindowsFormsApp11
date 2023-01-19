@@ -50,91 +50,48 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
 
         public void setDataTable(string data,EndPointsAPI endpoint ,HttpType accion)
         {
-            ListViewDataItem dataItem = null;
+            Console.WriteLine("Response API:");
+            Utils.Utils.printValues(data);
             this.radListView1.Items.Clear();
             switch (endpoint) {
 
                 case EndPointsAPI.EquipmentTypes:
                     if (accion == HttpType.GET) {
-                        GenericResponse<EquipmentTypesResponse> equipmentResponse = JsonConvert.DeserializeObject<GenericResponse<EquipmentTypesResponse>>(data); ;
-                        for (int i = 0; i < equipmentResponse.ModelGeneric.Length; i++)
-                        {
-                            EquipmentTypesResponse model = equipmentResponse.ModelGeneric[i];
-                            dataItem = new ListViewDataItem("ListView" + i, new string[] {
-                        model.Name,
-                        model.Description,
-                        model.Id.ToString()
-                        });
-                            dataItem.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-                            this.radListView1.Items.Add(dataItem);
-                        }
+                        GenericResponse<EquipmentTypesResponse> response = JsonConvert.DeserializeObject<GenericResponse<EquipmentTypesResponse>>(data); ;
+                        setValuesOnTable(JsonConvert.SerializeObject(response));
+
                     }
                     break;
                     case EndPointsAPI.MembersShips:
                     if (accion == HttpType.GET)
                     {
-                        GenericResponse<MemberShipsResponse> equipmentResponse = JsonConvert.DeserializeObject<GenericResponse<MemberShipsResponse>>(data); ;
-                        for (int i = 0; i < equipmentResponse.ModelGeneric.Length; i++)
-                        {
-                            MemberShipsResponse model = equipmentResponse.ModelGeneric[i];
-                            dataItem = new ListViewDataItem("ListView" + i, new string[] {
-                        model.Name,
-                        model.Cost,
-                        model.Duration,
-                        model.CreatedOn,
-                        model.Id.ToString()
-                        });
-                            dataItem.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-                            this.radListView1.Items.Add(dataItem);
-                        }
+                        GenericResponse<MemberShipsResponse> response = JsonConvert.DeserializeObject<GenericResponse<MemberShipsResponse>>(data); ;
+                        setValuesOnTable(JsonConvert.SerializeObject(response));
+
                     }
                     break;
 
                 case EndPointsAPI.Members:
                     if (accion == HttpType.GET) {
-
-                        GenericResponse<MembersResponse> membersResponse = JsonConvert.DeserializeObject<GenericResponse<MembersResponse>>(data);
-                        setValuesOnTable(JsonConvert.SerializeObject(membersResponse));
-
-
+                        GenericResponse<MembersResponse> response = JsonConvert.DeserializeObject<GenericResponse<MembersResponse>>(data);
+                        setValuesOnTable(JsonConvert.SerializeObject(response));
                     }
                     break;
                 case EndPointsAPI.Attendance:
                     if (accion == HttpType.GET)
                     {
-                        GenericResponse<AttendanceResponse> equipmentResponse = JsonConvert.DeserializeObject<GenericResponse<AttendanceResponse>>(data); ;
-                        for (int i = 0; i < equipmentResponse.ModelGeneric.Length; i++)
-                        {
-                            Member model = equipmentResponse.ModelGeneric[i].Member;
-                            dataItem = new ListViewDataItem("ListView" + i, new string[] {
-                        model.Name,
-                        model.LastName,
-                        model.BirthDay.ToString(),
-                        model.MembershipEnd.ToString(),
-                        model.Id.ToString()
-                        });
-                            dataItem.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-                            this.radListView1.Items.Add(dataItem);
-                        }
+                        GenericResponse<AttendanceResponse> response = JsonConvert.DeserializeObject<GenericResponse<AttendanceResponse>>(data); ;
+                        setValuesOnTable(JsonConvert.SerializeObject(response));
+
                     }
                     break;
 
                 case EndPointsAPI.Users:
                     if (accion == HttpType.GET)
                     {
-                        GenericResponse<UsersResponse> equipmentResponse = JsonConvert.DeserializeObject<GenericResponse<UsersResponse>>(data); ;
-                        for (int i = 0; i < equipmentResponse.ModelGeneric.Length; i++)
-                        {
-                            UsersResponse model = equipmentResponse.ModelGeneric[i];
-                            dataItem = new ListViewDataItem("ListView" + i, new string[] {
-                        model.UserName,
-                        model.PhoneNumber,
-                        model.Email,
-                        model.Id.ToString()
-                        });
-                            dataItem.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-                            this.radListView1.Items.Add(dataItem);
-                        }
+                        GenericResponse<UsersResponse> response = JsonConvert.DeserializeObject<GenericResponse<UsersResponse>>(data);
+                        setValuesOnTable(JsonConvert.SerializeObject(response));
+
                     }
                     break;
 
