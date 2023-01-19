@@ -80,6 +80,7 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
                 case EndPointsAPI.Attendance:
                     if (accion == HttpType.GET)
                     {
+                        //TODO aqui como tiene el json response un segundo nievel habria que hacer algo recursivo
                         GenericResponse<AttendanceResponse> response = JsonConvert.DeserializeObject<GenericResponse<AttendanceResponse>>(data); ;
                         setValuesOnTable(JsonConvert.SerializeObject(response));
 
