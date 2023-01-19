@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,18 +32,21 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
         {
             InitializeComponent();
         }
-   
 
-        public void buildScreen(List<GenericRequest> genericRequest, string data,string HeaderText, EndPointsAPI endpoint,HttpType accion) {
 
+        public void buildScreen(List<GenericRequest> genericRequest, string data, string HeaderText, EndPointsAPI endpoint, HttpType accion) {
+
+            this.formFields = genericRequest;
             this.HeaderText = HeaderText;
             getMeasurements(genericRequest, data);
             arrangeListView(genericRequest, data);
             arrangeButtons();
             arrangeLabel();
-            setDataTable(data, endpoint,accion);
-            this.formFields = genericRequest;
+            setDataTable(data, endpoint, accion);
         }
+
+
+ 
 
         public void setDataTable(string data,EndPointsAPI endpoint ,HttpType accion)
         {
@@ -88,25 +92,11 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
 
                 case EndPointsAPI.Members:
                     if (accion == HttpType.GET) {
-                        GenericResponse<MembersResponse> equipmentResponse = JsonConvert.DeserializeObject<GenericResponse<MembersResponse>>(data);
-                        for (int i = 0; i < equipmentResponse.ModelGeneric.Length; i++)
-                        {
-                            MembersResponse model = equipmentResponse.ModelGeneric[i];
-                            dataItem = new ListViewDataItem("ListView" + i, new string[] {
-                        model.name,
-                        model.lastName,
-                        model.birthDay,
-                        model.email,
-                        model.allowNewsLetter,
-                        model.registeredOn,
-                        model.membershipEnd,
-                        "1", //Todo siempre va Queretaro por que el API siempre regrese 0 
-                        "3",//Todo siempre va la membresia con id igual a 3 por el API solo regresa 0
-                        model.Id.ToString()
-                        });
-                            dataItem.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-                            this.radListView1.Items.Add(dataItem);
-                        }
+
+                        GenericResponse<MembersResponse> membersResponse = JsonConvert.DeserializeObject<GenericResponse<MembersResponse>>(data);
+                        setValuesOnTable(JsonConvert.SerializeObject(membersResponse));
+
+
                     }
                     break;
                 case EndPointsAPI.Attendance:
@@ -151,11 +141,62 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
             }
         }
 
+        private void setValuesOnTable(string jsonResponse)
+        {
+
+            //Tipo de objeto para agregar filas al listView control
+            ListViewDataItem dataItem = null;
+            //Convierto el modelo de cada response
+            Dictionary<string,object> dic = JsonConvert.DeserializeObject<Dictionary<string,object>>(jsonResponse);
+            // Se extrae el puedo modelo que contiene la lista de valores 
+            List<Dictionary<string, object>> modelMap =  JArray.Parse(JsonConvert.SerializeObject(dic["model"])).ToObject<List<Dictionary<string, object>>>();
+            //Obtengo el filtro para ver cuales campos se van a ver en la tabla
+            List<GenericRequest> fieldsOnTable = formFields.Where(genericRequest => genericRequest.ControlSeccion.Contains(ControlSeccion.TABLE)).ToList();
+            //Diccionario aux para ir guardando los valores de la fila
+            Dictionary<string, string> keyValues;
+            //Lista donde se van guardando los diccionarios
+            List<Dictionary<string,string>> keyValuesList = new List<Dictionary<string,string>>();
+
+            foreach (var mapResponse in modelMap) {
+
+                keyValues = new Dictionary<string, string>();
+
+                foreach (var fieldOnTable in fieldsOnTable) {
+                    
+                       string fieldOnTableKey = fieldOnTable.Key;
+
+                    foreach (var keyMapResponse in mapResponse.Keys) {
+
+                        if (fieldOnTableKey == keyMapResponse ) {
+                            keyValues.Add(keyMapResponse, (string)mapResponse[keyMapResponse].ToString());
+
+                        }
+                    }
+                }
+                keyValuesList.Add(keyValues);
+            }
+
+            for (int i = 0; i < keyValuesList.Count; i++)
+            {
+
+                var dicc = keyValuesList[i];
+                dataItem = new ListViewDataItem("ListView" + i, dicc.Values.ToArray());
+                dataItem.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+                this.radListView1.Items.Add(dataItem);
+
+            }
+
+
+
+        }
+
         private void getMeasurements(List<GenericRequest> headersColumns, Object data)
         {
 
-            float columnWidth = (int)((this.Size.Width * 0.75))/headersColumns.Count;
-            float columnTotalWidth = columnWidth * headersColumns.Count;
+             IEnumerable<GenericRequest> headersColumnsAux = headersColumns.Where((genericRequest) => genericRequest.ControlSeccion.Contains(ControlSeccion.TABLE)); 
+            
+            float columnWidth = (int)((this.Size.Width * 0.75))/ headersColumnsAux.ToList().Count;
+            float columnTotalWidth = columnWidth * headersColumnsAux.ToList().Count;
             float heighCenter = this.Size.Height * 0.5F;
 
             this.columnWidth = columnWidth;
@@ -279,7 +320,7 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
         // BUTTON PUT   
         private void radButton2_Click(object sender, EventArgs e)
         {
-            var itemsChecked = this.radListView1.CheckedItems;
+            var itemsChecked = this.radListView1.CheckedItems; 
 
             GenericRequest genericRequest;
             List<GenericRequest> genericRequestList = new List<GenericRequest>();

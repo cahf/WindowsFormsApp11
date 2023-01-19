@@ -58,16 +58,16 @@ namespace WindowsFormsApp11.Components.MainView
             this.userControlHome1.Hide();
             string data = await MainMenuPresenter.makeRequest("", EndPointsAPI.Members, HttpType.GET);
             this.userControlCustonListView1.buildScreen(new List<GenericRequest> {
-                new GenericRequest("Nombre", null, "name", API.Enums.EndPointsAPI.Members, API.Enums.HttpType.POST),
-                new GenericRequest("Apellido(s)", null, "lastName", API.Enums.EndPointsAPI.Members, API.Enums.HttpType.POST),
-                new GenericRequest("Fecha nacimiento", null, "birthDay", API.Enums.EndPointsAPI.Members, API.Enums.HttpType.POST),
-                new GenericRequest("Correo", null, "email", API.Enums.EndPointsAPI.Members, API.Enums.HttpType.POST),
-                new GenericRequest("Publicidad", null, "allowNewsLetter", API.Enums.EndPointsAPI.Members, API.Enums.HttpType.POST),
-                new GenericRequest("Fecha registro", null, "registeredOn", API.Enums.EndPointsAPI.Members, API.Enums.HttpType.POST),
-                new GenericRequest("Termina membresia", null, "membershipEnd", API.Enums.EndPointsAPI.Members, API.Enums.HttpType.POST),
-                new GenericRequest("ciudadId", null, "cityId", API.Enums.EndPointsAPI.Members, API.Enums.HttpType.POST),
-                new GenericRequest("membershipId", null, "membershipTypeId", API.Enums.EndPointsAPI.Members, API.Enums.HttpType.POST),
-                new GenericRequest("id", null, "id", API.Enums.EndPointsAPI.Members, API.Enums.HttpType.POST),
+                new GenericRequest("Nombre", null, "name", API.Enums.EndPointsAPI.Members, API.Enums.HttpType.POST,new List<ControlSeccion>{ControlSeccion.TABLE, ControlSeccion.FORM }),
+                new GenericRequest("Apellido(s)", null, "lastName", API.Enums.EndPointsAPI.Members, API.Enums.HttpType.POST,new List<ControlSeccion>{ControlSeccion.TABLE,ControlSeccion.FORM }),
+                new GenericRequest("Fecha nacimiento", null, "birthDay", API.Enums.EndPointsAPI.Members, API.Enums.HttpType.POST,new List<ControlSeccion>{ControlSeccion.TABLE,ControlSeccion.FORM }),
+                new GenericRequest("Correo", null, "email", API.Enums.EndPointsAPI.Members, API.Enums.HttpType.POST,new List<ControlSeccion>{ControlSeccion.TABLE, ControlSeccion.FORM }),
+                new GenericRequest("Publicidad", null, "allowNewsLetter", API.Enums.EndPointsAPI.Members, API.Enums.HttpType.POST,new List<ControlSeccion>{ ControlSeccion.FORM }),
+                new GenericRequest("Fecha registro", null, "registeredOn", API.Enums.EndPointsAPI.Members, API.Enums.HttpType.POST,new List<ControlSeccion>{ ControlSeccion.FORM }),
+                new GenericRequest("Termina membresia", null, "membershipEnd", API.Enums.EndPointsAPI.Members, API.Enums.HttpType.POST,new List<ControlSeccion>{ ControlSeccion.FORM }),
+                new GenericRequest("ciudadId", null, "cityId", API.Enums.EndPointsAPI.Members, API.Enums.HttpType.POST,new List<ControlSeccion>{ ControlSeccion.FORM }),
+                new GenericRequest("membershipId", null, "membershipTypeId", API.Enums.EndPointsAPI.Members, API.Enums.HttpType.POST,new List<ControlSeccion>{ ControlSeccion.FORM }),
+                new GenericRequest("id", null, "id", API.Enums.EndPointsAPI.Members, API.Enums.HttpType.POST,new List<ControlSeccion>{ControlSeccion.TABLE}),
 
 
             }, data, "Miembros", API.Enums.EndPointsAPI.Members, API.Enums.HttpType.GET);

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using WindowsFormsApp11.API.genericRequest;
 
 namespace WindowsFormsApp11.API.genericResponse
 {
@@ -19,6 +20,11 @@ namespace WindowsFormsApp11.API.genericResponse
 
         [JsonProperty("requestId")]
         public string RequestId { get; set; }
+
+        public static implicit operator GenericResponse<T>(GenericRequest v)
+        {
+            throw new NotImplementedException();
+        }
     }
 
  
