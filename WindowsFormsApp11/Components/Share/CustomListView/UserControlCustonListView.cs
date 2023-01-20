@@ -50,8 +50,7 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
 
         public void setDataTable(string data,EndPointsAPI endpoint ,HttpType accion)
         {
-            Console.WriteLine("Response API:");
-            Utils.Utils.printValues(data);
+          
             this.radListView1.Items.Clear();
             switch (endpoint) {
 
@@ -125,17 +124,11 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
 
                     searchDeep(fieldOnTableKey,mapResponse, keyValues);
 
-                    //foreach (var keyMapResponse in mapResponse.Keys) {
-
-                    //    if (fieldOnTableKey == keyMapResponse ) {
-                    //        keyValues.Add(keyMapResponse, (string)mapResponse[keyMapResponse].ToString());
-
-                    //    }
-                    //}
                 }
                 keyValuesList.Add(keyValues);
             }
 
+            //Renderizar valores en tabla
             for (int i = 0; i < keyValuesList.Count; i++)
             {
 
