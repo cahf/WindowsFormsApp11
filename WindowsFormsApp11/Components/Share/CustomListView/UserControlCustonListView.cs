@@ -123,13 +123,15 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
                     
                        string fieldOnTableKey = fieldOnTable.Key;
 
-                    foreach (var keyMapResponse in mapResponse.Keys) {
+                    searchDeep(fieldOnTableKey,mapResponse, keyValues);
 
-                        if (fieldOnTableKey == keyMapResponse ) {
-                            keyValues.Add(keyMapResponse, (string)mapResponse[keyMapResponse].ToString());
+                    //foreach (var keyMapResponse in mapResponse.Keys) {
 
-                        }
-                    }
+                    //    if (fieldOnTableKey == keyMapResponse ) {
+                    //        keyValues.Add(keyMapResponse, (string)mapResponse[keyMapResponse].ToString());
+
+                    //    }
+                    //}
                 }
                 keyValuesList.Add(keyValues);
             }
@@ -146,6 +148,41 @@ namespace WindowsFormsApp11.Components.Share.CustomListView
 
 
 
+        }
+
+
+        private void searchDeep(string keyTable,Dictionary<string,object> model, Dictionary<string, string> keyValues) {
+
+
+            foreach (var modelKey in model.Keys) {
+                        
+                Object value = model[modelKey];
+                if (value.GetType().ToString() == "Newtonsoft.Json.Linq.JObject")
+                {
+
+
+                    JObject jObject = (JObject)value;
+                    Dictionary<string,object> dic =   jObject.ToObject<Dictionary<string, object>>();
+
+                    searchDeep(keyTable, dic, keyValues);
+                }
+                else {
+
+                    if (keyTable == modelKey) {
+
+                        if(!keyValues.ContainsKey(keyTable))
+                            keyValues.Add(modelKey,(string)model[modelKey].ToString());
+
+                    }
+                
+                }
+            
+            
+            }
+
+
+
+        
         }
 
         private void getMeasurements(List<GenericRequest> headersColumns, Object data)
