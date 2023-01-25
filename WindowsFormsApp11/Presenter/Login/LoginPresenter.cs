@@ -25,9 +25,8 @@ namespace WindowsFormsApp11.Presenter.Login
             String user = _loginView.UserText;
             String password = _loginView.PasswordText;
 
-            bool isLoggedIn = LoginService.login(user, password);
+            return LoginService.login(user, password);
 
-            return isLoggedIn == true;
 
 
         }

@@ -30,10 +30,10 @@ namespace WindowsFormsApp11.Components.Login
         {
             MainForm mainForm = new MainForm();
 
-            this.Hide();
 
             if (loginPresenter.IsLoggedIn())
             {
+                this.Hide();
                 mainForm.Show();
                 mainForm.WindowState = FormWindowState.Maximized;
             }
